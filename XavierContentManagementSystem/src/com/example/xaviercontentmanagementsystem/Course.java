@@ -7,5 +7,4 @@ public class Course {
 	private String _CourseNumber = "";		//Course Number i.e 193P
 	private String _RoomNumber ="";			//Room Number
 	private String _Building = "";			//Building Course is held
-	
 }

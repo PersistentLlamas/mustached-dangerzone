@@ -17,7 +17,7 @@ public class Department
 	// @param String of the desired _Abbreviation
 	public void SetAbbreviation(String abv)
 	{
-		_Abbreviation = abv;
+		this._Abbreviation = abv;
 	}
 	
 	/*******************************************************************************************/
@@ -34,7 +34,7 @@ public class Department
 	// @param String of the desired _Name
 	public void SetName(String name)
 	{
-		_Name = name;
+		this._Name = name;
 	}
 	
 	/*******************************************************************************************/
