@@ -45,7 +45,6 @@ public class EventsContentProvider extends ContentProvider
 	{
 		SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
 		
-		//TO BE IMPLEMENTED
 		checkColumns(projection);
 		
 		queryBuilder.setTables(EventTable.TABLE_EVENTS);
@@ -64,9 +63,17 @@ public class EventsContentProvider extends ContentProvider
 		}
 		
 		SQLiteDatabase sqldb = database.getWritableDatabase();
+		Cursor cursor = queryBuilder.query(sqldb,projection, selection, selectionArgs, null, null, sortOrder);
+		cursor.setNotificationUri(getContext().getContentResolver(), uri);
 		
-		
-		
+		return cursor;
 	}
+	
+	@Override
+	public String getType(Uri uri)
+	{
+		return null;
+	}
+	
 }
 	
