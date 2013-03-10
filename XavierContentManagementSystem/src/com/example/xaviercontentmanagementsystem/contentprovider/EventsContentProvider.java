@@ -5,11 +5,13 @@ import java.util.HashSet;
 
 import android.content.ContentProvider;
 import android.content.ContentResolver;
+import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteQueryBuilder;
 import android.net.Uri;
+import android.text.TextUtils;
 
 import com.example.xaviercontentmanagementsystem.database.*;
 
@@ -77,6 +79,36 @@ public class EventsContentProvider extends ContentProvider
 	{
 		return null;
 	}
+	
+	@Override
+	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs)
+	{
+		int uriType = sUriMatcher.match(uri);
+		SQLiteDatabase sqldb = database.getWritableDatabase();
+		int rowsUpdated = 0;
+		switch(uriType)
+		{
+		case EVENT:
+			rowsUpdated = sqldb.update(EventTable.TABLE_EVENTS, values, selection, selectionArgs);
+			break;
+		case EVENT_ID:
+			String id = uri.getLastPathSegment();
+			if(TextUtils.isEmpty(selection))
+			{
+				rowsUpdated = sqldb.update(EventTable.TABLE_EVENTS, values, EventTable.COLUMN_ID + "=" + id, null);
+			}
+			else
+			{
+				rowsUpdated = sqldb.update(EventTable.TABLE_EVENTS, values, EventTable.COLUMN_ID + "=" + id + " and " + selection, selectionArgs);
+			}
+			break;
+		default:
+			throw new IllegalArgumentException("Unknown URI: " + uri);
+		}
+		getContext().getContentResolver().notifyChange(uri, null);
+		return rowsUpdated;
+	}
+	
 	private void checkColumns(String[] projection)
 	{
 		String[] available = { EventTable.COLUMN_DESCRIPTION, EventTable.COLUMN_DUE_DATE, EventTable.COLUMN_FLAGS, EventTable.COLUMN_ID, EventTable.COLUMN_PRIORITY, EventTable.COLUMN_SUMMARY };
