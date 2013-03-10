@@ -1,5 +1,8 @@
 package com.example.xaviercontentmanagementsystem.contentprovider;
 
+import java.util.Arrays;
+import java.util.HashSet;
+
 import android.content.ContentProvider;
 import android.content.ContentResolver;
 import android.content.UriMatcher;
@@ -74,6 +77,19 @@ public class EventsContentProvider extends ContentProvider
 	{
 		return null;
 	}
-	
+	private void checkColumns(String[] projection)
+	{
+		String[] available = { EventTable.COLUMN_DESCRIPTION, EventTable.COLUMN_DUE_DATE, EventTable.COLUMN_FLAGS, EventTable.COLUMN_ID, EventTable.COLUMN_PRIORITY, EventTable.COLUMN_SUMMARY };
+		if(projection != null)
+		{
+			HashSet<String> requestedColumns = new HashSet<String>(Arrays.asList(projection));
+			HashSet<String> availableColumns = new HashSet<String>(Arrays.asList(available));
+			//Check if all columns which are requested are available
+			if(!availableColumns.containsAll(requestedColumns))
+			{
+				throw new IllegalArgumentException("Unknown columns in projection");
+			}
+		}
+	}
 }
 	
