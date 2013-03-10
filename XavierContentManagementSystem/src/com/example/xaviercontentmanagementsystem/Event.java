@@ -2,9 +2,9 @@ package com.example.xaviercontentmanagementsystem;
 
 public class Event {
 	private String _Title = "";
-	//private String  _Link = "";
 	private String _Description = "";
 	//private String _DueDate = "";
+	//private String  _Link = "";
 	
 	/*****************************_TITLE******************************************************/
 	// Accessor method for the _Title property of the Event class.
