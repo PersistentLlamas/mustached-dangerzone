@@ -81,6 +81,54 @@ public class EventsContentProvider extends ContentProvider
 	}
 	
 	@Override
+	public Uri insert(Uri uri, ContentValues values)
+	{
+		int uriType = sUriMatcher.match(uri);
+		SQLiteDatabase sqlDB = database.getWritableDatabase();
+		int rowsDeleted = 0;
+		long id = 0;
+		switch (uriType)
+		{
+		case EVENT:
+			id = sqlDB.insert(EventTable.TABLE_EVENTS, null, values);
+			break;
+		default:
+			throw new IllegalArgumentException("Unknown URI: " + uri);
+		}
+		getContext().getContentResolver().notifyChange(uri,  null);
+		return Uri.parse(BASE_PATH + "/" + id);
+	}
+	
+	@Override
+	public int delete(Uri uri, String selection, String[] selectionArgs)
+	{
+		int uriType = sUriMatcher.match(uri);
+		SQLiteDatabase sqlDB = database.getWritableDatabase();
+		int rowsDeleted = 0;
+		switch(uriType)
+		{
+		case EVENT:
+			rowsDeleted = sqlDB.delete(EventTable.TABLE_EVENTS, selection, selectionArgs);
+			break;
+		case EVENT_ID:
+			String id = uri.getLastPathSegment();
+			if(TextUtils.isEmpty(selection))
+			{
+				rowsDeleted = sqlDB.delete(EventTable.TABLE_EVENTS, EventTable.COLUMN_ID + "=" + id, null);
+			}
+			else
+			{
+				rowsDeleted = sqlDB.delete(EventTable.TABLE_EVENTS,  EventTable.COLUMN_ID + "=" + id + " and " + selection,  selectionArgs);
+			}
+			break;
+		default:
+			throw new IllegalArgumentException("Unknown URI: " + uri);
+		}
+		getContext().getContentResolver().notifyChange(uri,  null);
+		return rowsDeleted;
+	}
+	
+	@Override
 	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs)
 	{
 		int uriType = sUriMatcher.match(uri);
