@@ -4,5 +4,10 @@
     <string name="app_name">Xavier Content Management System</string>
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
-
+    <string name="title_activity_event_overview">EventOverviewActivity</string>
+    <string name="action_settings">Settings</string>
+    <string name="no_events">Currently There Are No Events Maintained</string>
+    <string name="event_edit_summary">Summary</string>
+	<string name="event_edit_description">Description</string>
+	<string name="event_edit_confirm">Confirm</string>
 </resources>
