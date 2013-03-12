@@ -113,7 +113,10 @@ public class EventsContentProvider extends ContentProvider
 	/*
 	 * This method depeding on the uri recived will insert the values into the database.
 	 * 
-	 * 
+	 * @param uri, a Uri to be compared based on its type.
+         * @param values, a ContentValues object which contains the values to be inserted.
+         * 
+         * @returns a Uri of the path to the inserted values.
 	 * 
 	 * (non-Javadoc)
 	 * @see android.content.ContentProvider#insert(android.net.Uri, android.content.ContentValues)
