@@ -109,7 +109,7 @@ public class EventDetailActivity extends Activity {
 				EventTable.COLUMN_PRIORITY,
 				EventTable.COLUMN_DUE_DAY,
 				EventTable.COLUMN_DUE_MONTH,
-				EventTable.COLUMN_DUE_YEAR
+				EventTable.COLUMN_DUE_YEAR,
 			};
 		Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
 		if(cursor != null)
@@ -172,7 +172,8 @@ public class EventDetailActivity extends Activity {
 		int dueDay = detailDatePicker.getDayOfMonth();
 		int dueMonth = detailDatePicker.getMonth();
 		int dueYear = detailDatePicker.getYear();
-		
+		final int MONTH_OFFSET = 1;
+		String dateFormat = (dueMonth + MONTH_OFFSET) + "/" + dueDay + "/" + dueYear;
 		if(description.length() == 0 && summary.length() == 0)
 		{
 			return;
@@ -185,6 +186,8 @@ public class EventDetailActivity extends Activity {
 		values.put(EventTable.COLUMN_DUE_DAY, dueDay);
 		values.put(EventTable.COLUMN_DUE_MONTH, dueMonth);
 		values.put(EventTable.COLUMN_DUE_YEAR, dueYear);
+		values.put(EventTable.COLUMN_FORMAT_DATE, dateFormat);
+		Log.d("FORMATED DATE", dateFormat);
 		
 		if(eventUri == null)
 		{

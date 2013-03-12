@@ -30,17 +30,19 @@ public final class R {
     public static final class id {
         public static final int LinearLayout01=0x7f090002;
         public static final int TextView01=0x7f090009;
-        public static final int action_settings=0x7f09000b;
+        public static final int TextView02=0x7f09000b;
+        public static final int action_settings=0x7f09000d;
         public static final int btnAssignment=0x7f090000;
         public static final int category=0x7f090001;
         public static final int datePicker1=0x7f090005;
+        public static final int dueDateRow=0x7f09000a;
         public static final int event_edit_button=0x7f090006;
         public static final int event_edit_description=0x7f090004;
         public static final int event_edit_summary=0x7f090003;
         public static final int icon=0x7f090007;
-        public static final int insert=0x7f09000c;
+        public static final int insert=0x7f09000e;
         public static final int label=0x7f090008;
-        public static final int menu_settings=0x7f09000a;
+        public static final int menu_settings=0x7f09000c;
     }
     public static final class layout {
         public static final int activity_event_detail=0x7f030000;

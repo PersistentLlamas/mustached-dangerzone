@@ -244,6 +244,7 @@ public class EventsContentProvider extends ContentProvider
 				EventTable.COLUMN_DUE_DAY,
 				EventTable.COLUMN_DUE_MONTH,
 				EventTable.COLUMN_DUE_YEAR,
+				EventTable.COLUMN_FORMAT_DATE,
 				/*EventTable.COLUMN_FLAGS,*/
 				EventTable.COLUMN_ID,
 				EventTable.COLUMN_PRIORITY,

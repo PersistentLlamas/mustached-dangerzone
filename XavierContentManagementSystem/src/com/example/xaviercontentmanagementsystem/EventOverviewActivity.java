@@ -156,9 +156,9 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 
 		// Fields from the database (projection)
 		// Must include the _id column for the adapter to work
-		String[] from = new String[] { EventTable.COLUMN_SUMMARY };
+		String[] from = new String[] { EventTable.COLUMN_SUMMARY, EventTable.COLUMN_FORMAT_DATE };
 		// Fields on the UI to which we map
-		int[] to = new int[] { R.id.label };
+		int[] to = new int[] { R.id.label, R.id.dueDateRow };
 
 		getLoaderManager().initLoader(0, null, this);
 		adapter = new SimpleCursorAdapter(this, R.layout.event_row, null, from,
@@ -176,7 +176,7 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 	
 	@Override
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
-		String[] projection = { EventTable.COLUMN_ID, EventTable.COLUMN_SUMMARY };
+		String[] projection = { EventTable.COLUMN_ID, EventTable.COLUMN_SUMMARY, EventTable.COLUMN_FORMAT_DATE };
 		CursorLoader cursorLoader = new CursorLoader(this,
 				EventsContentProvider.CONTENT_URI, projection, null, null, null);
 		return cursorLoader;
