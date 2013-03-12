@@ -38,6 +38,14 @@ public class EventsContentProvider extends ContentProvider
 		sUriMatcher.addURI(AUTHORITY, BASE_PATH + "/#", EVENT_ID);
 	}
 	
+	
+	/*
+	 * This method creates a new EventDatabaseHelper and returns false.
+	 * 
+	 * @returns false
+	 * (non-Javadoc)
+	 * @see android.content.ContentProvider#onCreate()
+	 */
 	@Override
 	public boolean onCreate()
 	{
@@ -45,17 +53,29 @@ public class EventsContentProvider extends ContentProvider
 		return false;
 	}
 	
+	
+	/*
+	 * The method query recieves a Uri, String Array, String, String Array, and String. all to be processed for the query on
+	 * the database file.
+	 * 
+	 * @param uri, a Uri which is to be compared using the sUriMatcher to determine how to build the query.
+	 * @param projection, a String array containing the projected database values to be passed to checkColumns.
+	 * @param selection, a String containing the selection of the sql query.
+	 * @param selectionArgs, a String Array containing the specifics of the selection parameter.
+	 * @param sortOrder, the order in which the data in the query is to be sorted.
+	 * 
+	 * @returns the Cursor object cursor which contains the query
+	 * 
+	 * (non-Javadoc)
+	 * @see android.content.ContentProvider#query(android.net.Uri, java.lang.String[], java.lang.String, java.lang.String[], java.lang.String)
+	 */
 	@Override
 	public Cursor query(Uri uri, String[] projection, String selection, String[] selectionArgs, String sortOrder)
 	{
-		SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();
-		
+		SQLiteQueryBuilder queryBuilder = new SQLiteQueryBuilder();	
 		checkColumns(projection);
-		
 		queryBuilder.setTables(EventTable.TABLE_EVENTS);
-		
 		int uriType = sUriMatcher.match(uri);
-		
 		switch(uriType)
 		{
 		case EVENT:
@@ -66,20 +86,38 @@ public class EventsContentProvider extends ContentProvider
 		default:
 			throw new IllegalArgumentException("Unknown Uri: " + uri);
 		}
-		
 		SQLiteDatabase sqldb = database.getWritableDatabase();
 		Cursor cursor = queryBuilder.query(sqldb,projection, selection, selectionArgs, null, null, sortOrder);
 		cursor.setNotificationUri(getContext().getContentResolver(), uri);
-		
 		return cursor;
 	}
 	
+	
+	/*
+	 * This method returns null, it is a deprecated method.
+	 * 
+	 * @param uri, a Uri to be compared.
+	 * 
+	 * @returns null
+	 * 
+	 * (non-Javadoc)
+	 * @see android.content.ContentProvider#getType(android.net.Uri)
+	 */
 	@Override
 	public String getType(Uri uri)
 	{
 		return null;
 	}
 	
+	
+	/*
+	 * This method depeding on the uri recived will insert the values into the database.
+	 * 
+	 * 
+	 * 
+	 * (non-Javadoc)
+	 * @see android.content.ContentProvider#insert(android.net.Uri, android.content.ContentValues)
+	 */
 	@Override
 	public Uri insert(Uri uri, ContentValues values)
 	{
