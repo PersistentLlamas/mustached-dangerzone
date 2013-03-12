@@ -32,6 +32,14 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 	
 	private SimpleCursorAdapter adapter;
 	
+	/*
+	 * This method is called on creating of EventOverviewActivity and sets up all necessary things.
+	 *
+	 * @param savedInstanceState, a Bundle containing the last saved state if one exists. Null otherwise.
+	 *
+	 * @return void
+	 */
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -40,6 +48,14 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 		fillData();
 		registerForContextMenu(getListView());
 	}
+	
+	/*
+	 * This method inflates the options menu.
+	 *
+	 * @param menu, the options Menu to be inflated.
+	 *
+	 * @return true
+	 */
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -47,6 +63,14 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 		inflater.inflate(R.menu.listmenu, menu);
 		return true;
 	}
+	
+	/*
+	 * This method creates an event for the clicked item.
+	 *
+	 * @param item, a MenuItem reference to the clicked item.
+	 *
+	 * @return true
+	 */
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
@@ -57,6 +81,14 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 		}
 		return super.onOptionsItemSelected(item);
 	}
+	
+	/*
+	 * This method allows for the deletion of items and the showing of details.
+	 *
+	 * @param item, a MenuItem reference to the selected context item.
+	 *
+	 * @return true
+	 */
 	
 	@Override
 	public boolean onContextItemSelected(MenuItem item) {
@@ -73,10 +105,25 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 		return super.onContextItemSelected(item);
 	}
 	
+	/*
+	 * This method creates an event.
+	 */
+	
 	private void createEvent() {
 		Intent i = new Intent(this, EventDetailActivity.class);
 		startActivityForResult(i, ACTIVITY_CREATE);
 	}
+	
+	/*
+	 * This method sends the user to the detail activity on the clicked item.
+	 *
+	 * @param l, a ListView of the list in which the item resides.
+	 * @param v, a View reference to the clicked item.
+	 * @param position, the int position of the item in the list.
+	 * @param id, the id of the item.
+	 *
+	 * @return void
+	 */
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
@@ -88,6 +135,16 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 		// Activity returns an result if called with startActivityForResult
 		startActivityForResult(i, ACTIVITY_EDIT);
 	}
+	
+	/*
+	 * This method performs actions based on the result of an activity.
+	 *
+	 * @param requestCode, an int representing who the result came from.
+	 * @param resultCode, an int returned by the child activity through its setResult()
+	 * @param intent, an Intent which can return result data to the caller
+	 *
+	 * @return void
+	 */
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode,
