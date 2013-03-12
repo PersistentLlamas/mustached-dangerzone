@@ -24,6 +24,17 @@ public class EventDetailActivity extends Activity {
 	
 	private Uri eventUri;
 	
+	/*
+	 * This method is called on creation and sets up all the views and such.
+	 *
+	 * @param bundle, a Bundle containing the last saved state of the Activity if it is being re-entered. Null otherwise.
+	 *
+	 * @return void
+	 *
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	
 	@Override
 	protected void onCreate(Bundle bundle) {
 		super.onCreate(bundle);
@@ -45,6 +56,18 @@ public class EventDetailActivity extends Activity {
 		}
 		confirmButton.setOnClickListener(new View.OnClickListener()
 			{
+				
+			/*
+			 * This method adds an event when the button is clicked.
+			 *
+			 * @param v, a View reference to the clicked object.
+			 *
+			 * @return void
+			 *
+			 * (non-Javadoc)
+			 * @see android.widget.Button
+			 */
+			
 			@Override
 			public void onClick(View v) 
 			{
@@ -61,6 +84,15 @@ public class EventDetailActivity extends Activity {
 		});
 	}
 
+	/*
+	 * This method fills in the database based on the given uri.
+	 *
+	 * @param uri, a Uri on which a cursor is created.
+	 *
+	 * @return void
+	 *
+	 */
+	
 	private void fillData(Uri uri)
 	{
 		String[] projection = {EventTable.COLUMN_SUMMARY, EventTable.COLUMN_DESCRIPTION, EventTable.COLUMN_PRIORITY};
@@ -83,6 +115,14 @@ public class EventDetailActivity extends Activity {
 		}
 	}
 	
+	/*
+	 * This method saves the current state into the given bundle.
+	 *
+	 * @param outState, a Bundle in which to put the saved state.
+	 *
+	 * @return void
+	 */
+	
 	protected void onSaveInstanceState(Bundle outState)
 	{
 		super.onSaveInstanceState(outState);
@@ -90,11 +130,19 @@ public class EventDetailActivity extends Activity {
 		outState.putParcelable(EventsContentProvider.CONTENT_ITEM_TYPE, eventUri);
 	}
 	
+	/*
+	 * This method is called when the user exits the program. It saves the state.
+	 */
+	
 	protected void onPause()
 	{
 		super.onPause();
 		saveState();
 	}
+	
+	/*
+	 * This method saves the current state.
+	 */
 	
 	private void saveState()
 	{
@@ -121,6 +169,10 @@ public class EventDetailActivity extends Activity {
 			getContentResolver().update(eventUri, values, null, null);
 		}
 	}
+	
+	/*
+	 * This method creates a Toast (a small message to the user) warning them that an event summary is required.
+	 */
 	
 	private void makeToast()
 	{
