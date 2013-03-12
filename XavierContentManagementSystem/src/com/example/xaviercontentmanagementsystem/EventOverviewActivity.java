@@ -178,7 +178,10 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 	public Loader<Cursor> onCreateLoader(int id, Bundle args) {
 		String[] projection = { EventTable.COLUMN_ID, EventTable.COLUMN_SUMMARY, EventTable.COLUMN_FORMAT_DATE };
 		CursorLoader cursorLoader = new CursorLoader(this,
-				EventsContentProvider.CONTENT_URI, projection, null, null, null);
+				EventsContentProvider.CONTENT_URI, projection, null, null, 
+					  EventTable.COLUMN_DUE_YEAR + " ASC, "
+					+ EventTable.COLUMN_DUE_MONTH + " ASC, "
+					+ EventTable.COLUMN_DUE_DAY + " ASC");
 		return cursorLoader;
 	}
 	
