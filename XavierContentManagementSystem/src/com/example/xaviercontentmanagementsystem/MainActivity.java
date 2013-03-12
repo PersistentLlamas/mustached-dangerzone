@@ -11,6 +11,19 @@ import android.widget.Button;
 public class MainActivity extends Activity {
 	
 	private static final int ACTIVITY_CREATE = 0;
+	
+	/*
+	 * This method is called on creation and creates the add assignment button and creates a listener for it.
+	 *
+	 * @param savedInstanceState is a bundle containing the most recent saved state if the activity is being
+	 * re-initialized after being shut down. Otherwise, it is null.
+	 *
+	 * @return void
+	 *
+	 * (non-Javadoc)
+	 * @see android.app.Activity#onCreate(android.os.Bundle)
+	 */
+	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -20,6 +33,17 @@ public class MainActivity extends Activity {
 		
 		assignmentButton.setOnClickListener(new View.OnClickListener()
 		{
+			/*
+			 * This method handles clicks on the button.
+			 *
+			 * @param v, is a View reference to the widget that was clicked.
+			 *
+			 * @return void
+			 *
+			 * (non-Javadoc)
+			 * @see android.widget.Button
+			 */
+			
 			@Override
 			public void onClick(View v) {
 				Intent i = new Intent(assignmentButton.getContext(), EventOverviewActivity.class);
@@ -29,9 +53,19 @@ public class MainActivity extends Activity {
 		});
 	}
 
+	/*
+	 * This method inflates the menu and adds items to the action bar if it is present.
+	 *
+	 * @param menu, the options menu we are inflating.
+	 *
+	 * @return true
+	 *
+	 *(non-Javadoc)
+	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
+	 */
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.activity_main, menu);
 		return true;
 	}
