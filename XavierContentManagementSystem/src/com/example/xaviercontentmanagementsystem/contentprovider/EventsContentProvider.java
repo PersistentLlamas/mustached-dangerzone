@@ -238,7 +238,17 @@ public class EventsContentProvider extends ContentProvider
 	
 	private void checkColumns(String[] projection)
 	{
-		String[] available = { EventTable.COLUMN_DESCRIPTION, /* EventTable.COLUMN_DUE_DATE, EventTable.COLUMN_FLAGS, */ EventTable.COLUMN_ID, EventTable.COLUMN_PRIORITY, EventTable.COLUMN_SUMMARY };
+		String[] available = 
+			{
+				EventTable.COLUMN_DESCRIPTION,
+				EventTable.COLUMN_DUE_DAY,
+				EventTable.COLUMN_DUE_MONTH,
+				EventTable.COLUMN_DUE_YEAR,
+				/*EventTable.COLUMN_FLAGS,*/
+				EventTable.COLUMN_ID,
+				EventTable.COLUMN_PRIORITY,
+				EventTable.COLUMN_SUMMARY
+			};
 		if(projection != null)
 		{
 			HashSet<String> requestedColumns = new HashSet<String>(Arrays.asList(projection));

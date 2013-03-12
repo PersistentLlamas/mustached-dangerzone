@@ -1,5 +1,6 @@
 package com.example.xaviercontentmanagementsystem.database;
 
+
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -9,7 +10,9 @@ public class EventTable {
 	public static final String COLUMN_PRIORITY = "priority";
 	public static final String COLUMN_SUMMARY = "summary";
 	public static final String COLUMN_DESCRIPTION = "description";
-	public static final String COLUMN_DUE_DATE = "due_date";
+	public static final String COLUMN_DUE_DAY = "due_day";
+	public static final String COLUMN_DUE_MONTH = "due_month";
+	public static final String COLUMN_DUE_YEAR = "due_year";
 	public static final String COLUMN_FLAGS = "flags";
 
 	//Database Creation String
@@ -18,9 +21,11 @@ public class EventTable {
 			+ "(" + COLUMN_ID + " integer primary key autoincrement, "
 			+ COLUMN_PRIORITY + " text not null, "
 			+ COLUMN_SUMMARY + " text not null, "
-			+ COLUMN_DESCRIPTION + " text not null"
-			/*+ COLUMN_DUE_DATE + " text not null, "
-			+ COLUMN_FLAGS + " text not null"*/
+			+ COLUMN_DESCRIPTION + " text not null, "
+			+ COLUMN_DUE_DAY + " text not null, "
+			+ COLUMN_DUE_MONTH + " text not null, "
+			+ COLUMN_DUE_YEAR + " text not null"
+			/*+ COLUMN_FLAGS + " text not null"*/
 			+ ");";
 		
 	/*

@@ -1,5 +1,8 @@
 package com.example.xaviercontentmanagementsystem;
 
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import com.example.xaviercontentmanagementsystem.contentprovider.EventsContentProvider;
 import com.example.xaviercontentmanagementsystem.database.EventTable;
 
@@ -9,9 +12,11 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -21,6 +26,7 @@ public class EventDetailActivity extends Activity {
 	private Spinner detailCategory;
 	private EditText detailTitleText;
 	private EditText detailBodyText;
+	private DatePicker detailDatePicker;
 	
 	private Uri eventUri;
 	
@@ -44,6 +50,7 @@ public class EventDetailActivity extends Activity {
 		detailTitleText = (EditText) findViewById(R.id.event_edit_summary);
 		detailBodyText = (EditText) findViewById(R.id.event_edit_description);
 		Button confirmButton = (Button) findViewById(R.id.event_edit_button);
+		detailDatePicker = (DatePicker) findViewById(R.id.datePicker1);
 		
 		Bundle extras = getIntent().getExtras();
 		
@@ -95,7 +102,15 @@ public class EventDetailActivity extends Activity {
 	
 	private void fillData(Uri uri)
 	{
-		String[] projection = {EventTable.COLUMN_SUMMARY, EventTable.COLUMN_DESCRIPTION, EventTable.COLUMN_PRIORITY};
+		String[] projection = 
+			{
+				EventTable.COLUMN_SUMMARY,
+				EventTable.COLUMN_DESCRIPTION,
+				EventTable.COLUMN_PRIORITY,
+				EventTable.COLUMN_DUE_DAY,
+				EventTable.COLUMN_DUE_MONTH,
+				EventTable.COLUMN_DUE_YEAR
+			};
 		Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
 		if(cursor != null)
 		{
@@ -111,6 +126,11 @@ public class EventDetailActivity extends Activity {
 			}
 			detailTitleText.setText(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_SUMMARY)));
 			detailBodyText.setText(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_DESCRIPTION)));
+			detailDatePicker.init(
+					Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_DUE_YEAR))),
+					Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_DUE_MONTH))),
+					Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_DUE_DAY))),
+					null);
 			cursor.close();
 		}
 	}
@@ -149,6 +169,9 @@ public class EventDetailActivity extends Activity {
 		String category = (String)detailCategory.getSelectedItem();
 		String summary = detailTitleText.getText().toString();
 		String description = detailBodyText.getText().toString();
+		int dueDay = detailDatePicker.getDayOfMonth();
+		int dueMonth = detailDatePicker.getMonth();
+		int dueYear = detailDatePicker.getYear();
 		
 		if(description.length() == 0 && summary.length() == 0)
 		{
@@ -159,6 +182,9 @@ public class EventDetailActivity extends Activity {
 		values.put(EventTable.COLUMN_PRIORITY, category);
 		values.put(EventTable.COLUMN_SUMMARY, summary);
 		values.put(EventTable.COLUMN_DESCRIPTION, description);
+		values.put(EventTable.COLUMN_DUE_DAY, dueDay);
+		values.put(EventTable.COLUMN_DUE_MONTH, dueMonth);
+		values.put(EventTable.COLUMN_DUE_YEAR, dueYear);
 		
 		if(eventUri == null)
 		{
