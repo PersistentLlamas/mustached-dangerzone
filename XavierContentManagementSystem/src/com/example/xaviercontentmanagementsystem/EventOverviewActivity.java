@@ -26,8 +26,8 @@ import android.widget.ListView;
 public class EventOverviewActivity extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor>
 {
 	private static final int ACTIVITY_CREATE = 0;
-	private static final int ACTIVITY_EDIT = 0;
-	private static final int DELETE_ID = 0;
+	private static final int ACTIVITY_EDIT = 1;
+	private static final int DELETE_ID = Menu.FIRST + 1;
 	private static final int DIVIDER_HEIGHT = 2;
 	
 	private SimpleCursorAdapter adapter;
@@ -114,7 +114,7 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 	public void onCreateContextMenu(ContextMenu menu, View v,
 			ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
-		//menu.add(0, DELETE_ID, 0, R.string.menu_delete);
+		menu.add(0, DELETE_ID, 0, R.string.menu_delete);
 	}
 	
 	@Override
