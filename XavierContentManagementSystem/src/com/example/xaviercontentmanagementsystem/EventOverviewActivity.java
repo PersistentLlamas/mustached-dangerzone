@@ -14,6 +14,7 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.support.v4.widget.SimpleCursorAdapter;
 import android.view.ContextMenu;
+
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -73,14 +74,14 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 	}
 	
 	private void createEvent() {
-		Intent i = new Intent(this, MainActivity.class);
+		Intent i = new Intent(this, EventDetailActivity.class);
 		startActivityForResult(i, ACTIVITY_CREATE);
 	}
 	
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		Intent i = new Intent(this, MainActivity.class);
+		Intent i = new Intent(this, EventDetailActivity.class);
 		Uri eventUri = Uri.parse(EventsContentProvider.CONTENT_URI + "/" + id);
 		i.putExtra(EventsContentProvider.CONTENT_ITEM_TYPE, eventUri);
 
@@ -100,10 +101,10 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 		// Must include the _id column for the adapter to work
 		String[] from = new String[] { EventTable.COLUMN_SUMMARY };
 		// Fields on the UI to which we map
-		int[] to = new int[] { R.id.event_edit_description };
+		int[] to = new int[] { R.id.label };
 
 		getLoaderManager().initLoader(0, null, this);
-		adapter = new SimpleCursorAdapter(this, R.layout.event_edit/*R.layout.event_row*/, null, from,
+		adapter = new SimpleCursorAdapter(this, R.layout.event_row, null, from,
 				to, 0);
 
 		setListAdapter(adapter);

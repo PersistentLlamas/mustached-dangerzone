@@ -25,7 +25,7 @@ public class EventsContentProvider extends ContentProvider
 	private static final String AUTHORITY = "com.example.xaviercontentmanagementsystem.contentprovider";
 	private static final String BASE_PATH = "xaviercontentmanagementsystem";
 	
-	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + "BASE_PATH");
+	public static final Uri CONTENT_URI = Uri.parse("content://" + AUTHORITY + "/" + BASE_PATH);
 	
 	public static final String CONTENT_TYPE = ContentResolver.CURSOR_DIR_BASE_TYPE + "/" + BASE_PATH;
 	public static final String CONTENT_ITEM_TYPE = ContentResolver.CURSOR_ITEM_BASE_TYPE + "/" + BASE_PATH;
@@ -85,7 +85,6 @@ public class EventsContentProvider extends ContentProvider
 	{
 		int uriType = sUriMatcher.match(uri);
 		SQLiteDatabase sqlDB = database.getWritableDatabase();
-		int rowsDeleted = 0;
 		long id = 0;
 		switch (uriType)
 		{
@@ -159,7 +158,7 @@ public class EventsContentProvider extends ContentProvider
 	
 	private void checkColumns(String[] projection)
 	{
-		String[] available = { EventTable.COLUMN_DESCRIPTION, EventTable.COLUMN_DUE_DATE, EventTable.COLUMN_FLAGS, EventTable.COLUMN_ID, EventTable.COLUMN_PRIORITY, EventTable.COLUMN_SUMMARY };
+		String[] available = { EventTable.COLUMN_DESCRIPTION, /* EventTable.COLUMN_DUE_DATE, EventTable.COLUMN_FLAGS, */ EventTable.COLUMN_ID, EventTable.COLUMN_PRIORITY, EventTable.COLUMN_SUMMARY };
 		if(projection != null)
 		{
 			HashSet<String> requestedColumns = new HashSet<String>(Arrays.asList(projection));

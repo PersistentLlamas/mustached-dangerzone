@@ -18,9 +18,9 @@ public class EventTable {
 			+ "(" + COLUMN_ID + " integer primary key autoincrement, "
 			+ COLUMN_PRIORITY + " text not null, "
 			+ COLUMN_SUMMARY + " text not null, "
-			+ COLUMN_DESCRIPTION + " text not null, "
-			+ COLUMN_DUE_DATE + " text not null, "
-			+ COLUMN_FLAGS + " text not null, "
+			+ COLUMN_DESCRIPTION + " text not null"
+			/*+ COLUMN_DUE_DATE + " text not null, "
+			+ COLUMN_FLAGS + " text not null"*/
 			+ ");";
 		
 	/*

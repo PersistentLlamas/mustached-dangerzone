@@ -8,6 +8,10 @@
     <string name="action_settings">Settings</string>
     <string name="no_events">Currently There Are No Events Maintained</string>
     <string name="event_edit_summary">Summary</string>
-	<string name="event_edit_description">Description</string>
-	<string name="event_edit_confirm">Confirm</string>
+    <string name="event_edit_description">Description</string>
+    <string name="event_edit_confirm">Confirm</string>
+    <string name="title_activity_event_detail">EventDetailActivity</string>
+    <string name="imgdesc">IMG</string>
+    <string name="assignment_button">View Assignments</string>
+
 </resources>
