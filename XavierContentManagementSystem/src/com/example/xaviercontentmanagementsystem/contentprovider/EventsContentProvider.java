@@ -111,7 +111,7 @@ public class EventsContentProvider extends ContentProvider
 	
 	
 	/*
-	 * This method depeding on the uri recived will insert the values into the database.
+	 * This method depending on the uri recived will insert the values into the database.
 	 * 
 	 * @param uri, a Uri to be compared based on its type.
          * @param values, a ContentValues object which contains the values to be inserted.
@@ -138,6 +138,20 @@ public class EventsContentProvider extends ContentProvider
 		getContext().getContentResolver().notifyChange(uri,  null);
 		return Uri.parse(BASE_PATH + "/" + id);
 	}
+	
+	/*
+	 * This method will delete objects from the database depending on the uri given.
+	 *
+	 * @param uri, a URI to be compared based on its type.
+	 * @param selection, a string describing the WHERE clause for the delete
+	 * @param selectionArgs, an array of strings that contains the arguments for the WHERE clause
+	 *
+	 * @returns an int representing the number of rows effected if a WHERE clause is passed in,
+	 * and 0 otherwise. To delete all rows and get a row count, pass "1" as the WHERE clause.
+	 *
+	 * (non-Javadoc)
+	 * @see android.content.ContentProvider#delete(android.net.Uri, java.lang.String, java.lang.String[])
+	 */
 	
 	@Override
 	public int delete(Uri uri, String selection, String[] selectionArgs)
@@ -168,6 +182,20 @@ public class EventsContentProvider extends ContentProvider
 		return rowsDeleted;
 	}
 	
+	/*
+	 * This methods updates the database with the given values dependant on the uri given.
+	 *
+	 * @param uri, a Uri to be compared based on its type.
+	 * @param values, a ContentValues object which contains the updated values.
+	 * @param selection, a String representing the WHERE clause for the UPDATE command.
+	 * @param selectionArgs, a String[] containing the arguments used in the WHERE clause.
+	 *
+	 * @return an int representing the number of rows effected by the update.
+	 *
+	 * (non-Javadoc)
+	 * @see android.content.ContentProvider#update(android.net.Uri, android.content.ContentValues, java.lang.String, java.lang.String[])
+	 */
+	
 	@Override
 	public int update(Uri uri, ContentValues values, String selection, String[] selectionArgs)
 	{
@@ -196,6 +224,17 @@ public class EventsContentProvider extends ContentProvider
 		getContext().getContentResolver().notifyChange(uri, null);
 		return rowsUpdated;
 	}
+	
+	/*
+	 * This method checks if all the columns in the given projection are in the known available columns.
+	 * 
+	 * @param projection, a String[] containing the requested columns.
+	 *
+	 * @return void
+	 *
+	 * (non-Javadoc)
+	 * @see android.content.ContentProvider#checkColumns(java.lang.String[[)
+	 */
 	
 	private void checkColumns(String[] projection)
 	{
