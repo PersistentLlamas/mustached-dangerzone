@@ -21,7 +21,11 @@
         </activity>
         <activity
             android:name="com.example.xaviercontentmanagementsystem.EventOverviewActivity"
-            android:label="@string/title_activity_event_overview" >
+            android:label="@string/title_activity_event_overview"
+            android:parentActivityName="com.example.xaviercontentmanagementsystem.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xaviercontentmanagementsystem.MainActivity" /> >
         </activity>
         <activity
             android:name="com.example.xaviercontentmanagementsystem.EventDetailActivity"
@@ -36,10 +40,10 @@
         <activity
             android:name="com.example.xaviercontentmanagementsystem.BusinessCollegeEventsActivity"
             android:label="@string/title_activity_business_college_events"
-            android:parentActivityName="android.app.ListActivity" >
+            android:parentActivityName="com.example.xaviercontentmanagementsystem.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="android.app.ListActivity" />
+                android:value="com.example.xaviercontentmanagementsystem.MainActivity" />
         </activity>
     </application>
 

@@ -70,4 +70,5 @@ public class BusinessCollegeEventsActivity extends ListActivity {
 		setListAdapter(adapter);
 		
 	}
+	
 }
