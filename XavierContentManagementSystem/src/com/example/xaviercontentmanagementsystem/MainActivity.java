@@ -1,9 +1,9 @@
 package com.example.xaviercontentmanagementsystem;
 
 import android.os.Bundle;
+import android.os.StrictMode;
 import android.app.Activity;
 import android.content.Intent;
-import android.view.*;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
@@ -29,7 +29,12 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
+		StrictMode.ThreadPolicy policy = new StrictMode.
+				ThreadPolicy.Builder().permitAll().build();
+				StrictMode.setThreadPolicy(policy); 
+		
 		final Button assignmentButton = (Button) findViewById(R.id.btnAssignment);
+		final Button eventsButton = (Button) findViewById(R.id.btnEvents);
 		
 		assignmentButton.setOnClickListener(new View.OnClickListener()
 		{
@@ -49,6 +54,16 @@ public class MainActivity extends Activity {
 				Intent i = new Intent(assignmentButton.getContext(), EventOverviewActivity.class);
 				startActivityForResult(i, ACTIVITY_CREATE);
 				
+			}
+		});
+		
+		eventsButton.setOnClickListener(new View.OnClickListener()
+		{
+			
+			@Override
+			public void onClick(View v) {
+				Intent i = new Intent(eventsButton.getContext(), BusinessCollegeEventsActivity.class);
+				startActivityForResult(i, ACTIVITY_CREATE);
 			}
 		});
 	}

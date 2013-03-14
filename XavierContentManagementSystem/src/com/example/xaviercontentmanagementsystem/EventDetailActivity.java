@@ -1,8 +1,5 @@
 package com.example.xaviercontentmanagementsystem;
 
-import java.util.Date;
-import java.util.GregorianCalendar;
-
 import com.example.xaviercontentmanagementsystem.contentprovider.EventsContentProvider;
 import com.example.xaviercontentmanagementsystem.database.EventTable;
 
@@ -13,7 +10,6 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;

@@ -14,5 +14,7 @@
     <string name="imgdesc">IMG</string>
     <string name="menu_delete">Delete Event</string>
     <string name="assignment_button">View Assignments</string>
+    <string name="events_button">View Events</string>
+    <string name="title_activity_business_college_events">BusinessCollegeEventsActivity</string>
 
 </resources>

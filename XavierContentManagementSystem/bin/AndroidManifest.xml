@@ -4,9 +4,8 @@
     android:versionCode="1"
     android:versionName="1.0" >
 
-    <uses-sdk
-        android:minSdkVersion="17" />
-
+    <uses-sdk android:minSdkVersion="17" />
+	<uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -28,10 +27,20 @@
             android:name="com.example.xaviercontentmanagementsystem.EventDetailActivity"
             android:label="@string/title_activity_event_detail" >
         </activity>
-         <provider
-            android:name=".contentprovider.EventsContentProvider"
+
+        <provider
+            android:name="com.example.xaviercontentmanagementsystem.contentprovider.EventsContentProvider"
             android:authorities="com.example.xaviercontentmanagementsystem.contentprovider" >
         </provider>
+
+        <activity
+            android:name="com.example.xaviercontentmanagementsystem.BusinessCollegeEventsActivity"
+            android:label="@string/title_activity_business_college_events"
+            android:parentActivityName="android.app.ListActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="android.app.ListActivity" />
+        </activity>
     </application>
-	  
+
 </manifest>
