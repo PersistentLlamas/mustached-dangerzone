@@ -42,7 +42,7 @@
         android:layout_weight="1"
         android:gravity="top"
         android:hint="@string/event_edit_professor"
-        andorid:imeOptions="actionNext" >
+        android:imeOptions="actionNext" >
     </EditText>
     
     <EditText
