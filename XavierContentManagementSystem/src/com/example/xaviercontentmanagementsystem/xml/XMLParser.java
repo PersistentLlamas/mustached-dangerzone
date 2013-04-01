@@ -41,6 +41,7 @@ public class XMLParser
 			HttpResponse httpResponse = httpClient.execute(httpPost);
 			HttpEntity httpEntity = httpResponse.getEntity();
 			xml = EntityUtils.toString(httpEntity);
+			Log.d("RESULT", xml);
 		}
 		catch (UnsupportedEncodingException e)
 		{

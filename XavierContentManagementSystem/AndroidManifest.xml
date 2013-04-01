@@ -5,7 +5,9 @@
     android:versionName="1.0" >
 
     <uses-sdk android:minSdkVersion="17" />
-	<uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
@@ -20,13 +22,13 @@
             </intent-filter>
         </activity>
         <activity
-            
             android:name="com.example.xaviercontentmanagementsystem.EventOverviewActivity"
             android:label="@string/title_activity_event_overview"
             android:parentActivityName="com.example.xaviercontentmanagementsystem.MainActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.example.xaviercontentmanagementsystem.MainActivity" /> >
+                android:value="com.example.xaviercontentmanagementsystem.MainActivity" />
+ >
         </activity>
         <activity
             android:name="com.example.xaviercontentmanagementsystem.EventDetailActivity"
@@ -45,6 +47,10 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xaviercontentmanagementsystem.MainActivity" />
+        </activity>
+        <activity
+            android:name="com.example.xaviercontentmanagementsystem.ListItemDetailActivity"
+            android:label="@string/title_activity_list_item_detail" >
         </activity>
     </application>
 

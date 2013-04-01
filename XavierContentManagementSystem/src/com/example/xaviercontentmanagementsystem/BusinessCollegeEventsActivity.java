@@ -11,12 +11,18 @@ import com.example.xaviercontentmanagementsystem.xml.XMLParser;
 
 import android.os.Bundle;
 import android.app.ListActivity;
+import android.content.Intent;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 public class BusinessCollegeEventsActivity extends ListActivity {
 	
-	private static final String URL = "http://cerebro.cs.xu.edu/~philoj/events.xml";
+	private static final String URL = /*"xavier.edu/williams/events/events.xml"*/"http://cerebro.cs.xu.edu/~philoj/events.xml";
 	
 	//XML nodes
 	private static final String NODE_EVENT = "EVENT";
@@ -68,6 +74,24 @@ public class BusinessCollegeEventsActivity extends ListActivity {
 				new String[] {NODE_TITLE, NODE_DATE } , new int [] {
 					R.id.name, R.id.description } );
 		setListAdapter(adapter);
+		
+		ListView listView = getListView();
+		
+		listView.setOnItemClickListener(new OnItemClickListener(){
+
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id)
+			{
+				String name = ((TextView) view.findViewById(R.id.name)).getText().toString();
+				String description = ((TextView) view.findViewById(R.id.description)).getText().toString();
+				
+				Intent intent = new Intent(getApplicationContext(), ListItemDetailActivity.class);
+				intent.putExtra(NODE_TITLE, name);
+				intent.putExtra(NODE_DATE, description);
+				startActivity(intent);
+			}
+			
+		});
 		
 	}
 	

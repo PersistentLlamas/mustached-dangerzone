@@ -18,5 +18,6 @@
     <string name="assignment_button">View Assignments</string>
     <string name="events_button">View Events</string>
     <string name="title_activity_business_college_events">BusinessCollegeEventsActivity</string>
+    <string name="title_activity_list_item_detail">ListItemDetailActivity</string>
 
 </resources>

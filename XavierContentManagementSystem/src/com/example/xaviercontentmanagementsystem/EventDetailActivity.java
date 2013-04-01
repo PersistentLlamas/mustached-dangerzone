@@ -202,6 +202,7 @@ public class EventDetailActivity extends Activity {
 	private void makeToast()
 	{
 		Toast.makeText(EventDetailActivity.this, "Please give a summary", Toast.LENGTH_LONG).show();
+		Log.d("TOAST", "Toast was made, and it was good. and i had a really really really good time.");
 	}
 
 }
