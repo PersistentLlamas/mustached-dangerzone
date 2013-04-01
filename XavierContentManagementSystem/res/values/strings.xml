@@ -10,6 +10,8 @@
     <string name="event_edit_summary">Summary</string>
     <string name="event_edit_description">Description</string>
     <string name="event_edit_confirm">Confirm</string>
+    <string name="event_edit_professor">Professor</string>
+    <string name="event_edit_course">Course</string>
     <string name="title_activity_event_detail">EventDetailActivity</string>
     <string name="imgdesc">IMG</string>
     <string name="menu_delete">Delete Event</string>
