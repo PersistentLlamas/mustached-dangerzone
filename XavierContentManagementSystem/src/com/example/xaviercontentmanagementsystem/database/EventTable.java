@@ -15,6 +15,8 @@ public class EventTable {
 	public static final String COLUMN_DUE_YEAR = "due_year";
 	public static final String COLUMN_FLAGS = "flags";
 	public static final String COLUMN_FORMAT_DATE = "format_date";
+	public static final String COLUMN_PROFESSOR = "professor";
+	public static final String COLUMN_COURSE = "course";
 
 	//Database Creation String
 	private static final String DATABASE_CREATE = "create table "
@@ -23,6 +25,8 @@ public class EventTable {
 			+ COLUMN_PRIORITY + " text not null, "
 			+ COLUMN_SUMMARY + " text not null, "
 			+ COLUMN_DESCRIPTION + " text not null, "
+			+ COLUMN_PROFESSOR + " text not null, "
+			+ COLUMN_COURSE + " text not null, "
 			+ COLUMN_DUE_DAY + " text not null, "
 			+ COLUMN_DUE_MONTH + " text not null, "
 			+ COLUMN_DUE_YEAR + " text not null, "
