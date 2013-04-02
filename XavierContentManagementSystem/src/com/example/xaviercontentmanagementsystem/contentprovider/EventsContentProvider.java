@@ -241,6 +241,8 @@ public class EventsContentProvider extends ContentProvider
 		String[] available = 
 			{
 				EventTable.COLUMN_DESCRIPTION,
+				EventTable.COLUMN_PROFESSOR,
+				EventTable.COLUMN_COURSE,
 				EventTable.COLUMN_DUE_DAY,
 				EventTable.COLUMN_DUE_MONTH,
 				EventTable.COLUMN_DUE_YEAR,
