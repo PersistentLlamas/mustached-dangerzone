@@ -19,5 +19,6 @@
     <string name="events_button">View Events</string>
     <string name="title_activity_business_college_events">BusinessCollegeEventsActivity</string>
     <string name="title_activity_list_item_detail">ListItemDetailActivity</string>
+    <string name="button_add">Add Event</string>
 
 </resources>

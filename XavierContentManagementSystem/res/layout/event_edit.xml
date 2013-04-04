@@ -3,7 +3,6 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical" >
-    
     <Spinner
         android:id="@+id/category"
         android:layout_width="wrap_content"
@@ -24,11 +23,7 @@
             android:imeOptions="actionNext">
         </EditText>
      </LinearLayout>
-    
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >   
+
         <EditText
             android:id="@+id/event_edit_description"
             android:layout_width="fill_parent"
@@ -58,7 +53,6 @@
             android:hint="@string/event_edit_course"
             android:imeOptions="actionNext" >
         </EditText> 
-    </ScrollView>
     
 
     <DatePicker
@@ -72,5 +66,4 @@
         android:layout_height="wrap_content"
         android:text="@string/event_edit_confirm">
     </Button>
-
 </LinearLayout>

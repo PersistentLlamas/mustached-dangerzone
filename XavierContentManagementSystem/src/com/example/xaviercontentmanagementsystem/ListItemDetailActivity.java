@@ -26,6 +26,7 @@ public class ListItemDetailActivity extends Activity {
         
         lblTitle.setText(title);
         lblDate.setText(date);
+        
 	}
 
 }
