@@ -28,12 +28,7 @@
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    >
-    <LinearLayout
-        android:id="@+id/LinearLayout02"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content">
-        
+    >   
         <EditText
             android:id="@+id/event_edit_description"
             android:layout_width="fill_parent"
@@ -63,7 +58,6 @@
             android:hint="@string/event_edit_course"
             android:imeOptions="actionNext" >
         </EditText> 
-    </LinearLayout>
     </ScrollView>
     
 
