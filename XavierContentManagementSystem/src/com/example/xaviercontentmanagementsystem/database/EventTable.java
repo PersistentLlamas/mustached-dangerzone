@@ -33,6 +33,8 @@ public class EventTable {
 			+ COLUMN_FORMAT_DATE + " text not null"
 			/*+ COLUMN_FLAGS + " text not null"*/
 			+ ");";
+	
+	//Noah Test Upload
 		
 	/*
 	 * This method receives a database and runs the SQLite Query shown in the 
