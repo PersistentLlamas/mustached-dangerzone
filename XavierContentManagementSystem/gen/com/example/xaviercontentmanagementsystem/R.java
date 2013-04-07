@@ -31,11 +31,13 @@ public final class R {
         public static final int LinearLayout01=0x7f090006;
         public static final int TextView01=0x7f090011;
         public static final int TextView02=0x7f090013;
-        public static final int action_settings=0x7f090015;
+        public static final int action_settings=0x7f090018;
         public static final int btnAdd=0x7f090002;
         public static final int btnAssignment=0x7f090003;
         public static final int btnEvents=0x7f090004;
+        public static final int btnfragmentassignments=0x7f090014;
         public static final int category=0x7f090005;
+        public static final int contentframe=0x7f090016;
         public static final int datePicker1=0x7f09000b;
         public static final int description=0x7f09000e;
         public static final int description_label=0x7f090001;
@@ -45,10 +47,11 @@ public final class R {
         public static final int event_edit_description=0x7f090008;
         public static final int event_edit_professor=0x7f090009;
         public static final int event_edit_summary=0x7f090007;
+        public static final int fragment1=0x7f090015;
         public static final int icon=0x7f09000f;
-        public static final int insert=0x7f090016;
+        public static final int insert=0x7f090019;
         public static final int label=0x7f090010;
-        public static final int menu_settings=0x7f090014;
+        public static final int menu_settings=0x7f090017;
         public static final int name=0x7f09000d;
         public static final int name_label=0x7f090000;
     }
@@ -61,6 +64,9 @@ public final class R {
         public static final int event_feed_list_item=0x7f030005;
         public static final int event_list=0x7f030006;
         public static final int event_row=0x7f030007;
+        public static final int list_buttons_fragment=0x7f030008;
+        public static final int main_content_list_fragments=0x7f030009;
+        public static final int start_fragment=0x7f03000a;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;

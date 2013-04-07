@@ -23,6 +23,8 @@ public class EventDetailActivity extends Activity {
 	private Spinner detailCategory;
 	private EditText detailTitleText;
 	private EditText detailBodyText;
+	private EditText detailCourseText;
+	private EditText detailProfessorText;
 	private DatePicker detailDatePicker;
 	
 	private Uri eventUri;
@@ -46,6 +48,8 @@ public class EventDetailActivity extends Activity {
 		detailCategory = (Spinner) findViewById(R.id.category);
 		detailTitleText = (EditText) findViewById(R.id.event_edit_summary);
 		detailBodyText = (EditText) findViewById(R.id.event_edit_description);
+		detailCourseText = (EditText) findViewById(R.id.event_edit_course);
+		detailProfessorText = (EditText) findViewById(R.id.event_edit_professor);
 		Button confirmButton = (Button) findViewById(R.id.event_edit_button);
 		detailDatePicker = (DatePicker) findViewById(R.id.datePicker1);
 		Intent intent = getIntent();
@@ -111,6 +115,8 @@ public class EventDetailActivity extends Activity {
 			{
 				EventTable.COLUMN_SUMMARY,
 				EventTable.COLUMN_DESCRIPTION,
+				EventTable.COLUMN_COURSE,
+				EventTable.COLUMN_PROFESSOR,
 				EventTable.COLUMN_PRIORITY,
 				EventTable.COLUMN_DUE_DAY,
 				EventTable.COLUMN_DUE_MONTH,
@@ -131,6 +137,8 @@ public class EventDetailActivity extends Activity {
 			}
 			detailTitleText.setText(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_SUMMARY)));
 			detailBodyText.setText(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_DESCRIPTION)));
+			detailCourseText.setText(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_COURSE)));
+			detailProfessorText.setText(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_PROFESSOR)));
 			detailDatePicker.init(
 					Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_DUE_YEAR))),
 					Integer.parseInt(cursor.getString(cursor.getColumnIndexOrThrow(EventTable.COLUMN_DUE_MONTH))),
@@ -174,6 +182,8 @@ public class EventDetailActivity extends Activity {
 		String category = (String)detailCategory.getSelectedItem();
 		String summary = detailTitleText.getText().toString();
 		String description = detailBodyText.getText().toString();
+		String course = detailCourseText.getText().toString();
+		String professor = detailProfessorText.getText().toString();
 		int dueDay = detailDatePicker.getDayOfMonth();
 		int dueMonth = detailDatePicker.getMonth();
 		int dueYear = detailDatePicker.getYear();
@@ -188,6 +198,8 @@ public class EventDetailActivity extends Activity {
 		values.put(EventTable.COLUMN_PRIORITY, category);
 		values.put(EventTable.COLUMN_SUMMARY, summary);
 		values.put(EventTable.COLUMN_DESCRIPTION, description);
+		values.put(EventTable.COLUMN_COURSE, course);
+		values.put(EventTable.COLUMN_PROFESSOR, professor);
 		values.put(EventTable.COLUMN_DUE_DAY, dueDay);
 		values.put(EventTable.COLUMN_DUE_MONTH, dueMonth);
 		values.put(EventTable.COLUMN_DUE_YEAR, dueYear);
