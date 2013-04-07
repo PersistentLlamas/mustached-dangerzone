@@ -22,16 +22,7 @@
             android:hint="@string/event_edit_summary"
             android:imeOptions="actionNext">
         </EditText>
-     </LinearLayout>
 
-    <ScrollView
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    >
-        <LinearLayout
-            andorid:id="@+id/LinearLayout02"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
         <EditText
             android:id="@+id/event_edit_description"
             android:layout_width="0dip"
@@ -61,8 +52,7 @@
             android:hint="@string/event_edit_course"
             android:imeOptions="actionNext" >
         </EditText> 
-        </LinearLayout>
-    </ScrollView>
+     </LinearLayout>
 
     <DatePicker
         android:id="@+id/datePicker1"
