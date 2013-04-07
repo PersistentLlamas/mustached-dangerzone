@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Log;
@@ -47,15 +48,23 @@ public class EventDetailActivity extends Activity {
 		detailBodyText = (EditText) findViewById(R.id.event_edit_description);
 		Button confirmButton = (Button) findViewById(R.id.event_edit_button);
 		detailDatePicker = (DatePicker) findViewById(R.id.datePicker1);
-		
-		Bundle extras = getIntent().getExtras();
-		
-		eventUri = (bundle == null) ? null : (Uri) bundle.getParcelable(EventsContentProvider.CONTENT_ITEM_TYPE);
-		
-		if(extras != null)
+		Intent intent = getIntent();
+		if(intent.hasExtra("TITLE"))
 		{
-			eventUri = extras.getParcelable(EventsContentProvider.CONTENT_ITEM_TYPE);
-			fillData(eventUri);
+			detailTitleText.setText(intent.getStringExtra("TITLE"));
+			detailBodyText.setText(intent.getStringExtra("DATE"));
+		}
+		else
+		{
+			Bundle extras = getIntent().getExtras();
+		
+			eventUri = (bundle == null) ? null : (Uri) bundle.getParcelable(EventsContentProvider.CONTENT_ITEM_TYPE);
+		
+			if(extras != null)
+			{
+				eventUri = extras.getParcelable(EventsContentProvider.CONTENT_ITEM_TYPE);
+				fillData(eventUri);
+			}
 		}
 		confirmButton.setOnClickListener(new View.OnClickListener()
 			{
