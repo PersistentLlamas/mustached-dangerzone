@@ -65,4 +65,10 @@
         android:layout_height="wrap_content"
         android:text="@string/event_edit_confirm">
     </Button>
+    <Button
+        android:id="@+id/btnCalAdd"
+        android:layout_marginTop="100dip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_cal_add"/>
 </LinearLayout>

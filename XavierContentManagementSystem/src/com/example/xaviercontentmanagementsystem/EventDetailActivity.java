@@ -1,10 +1,14 @@
 package com.example.xaviercontentmanagementsystem;
 
+import java.util.GregorianCalendar;
+
 import com.example.xaviercontentmanagementsystem.contentprovider.EventsContentProvider;
 import com.example.xaviercontentmanagementsystem.database.EventTable;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.CalendarContract;
+import android.provider.CalendarContract.Events;
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;
@@ -51,6 +55,7 @@ public class EventDetailActivity extends Activity {
 		detailCourseText = (EditText) findViewById(R.id.event_edit_course);
 		detailProfessorText = (EditText) findViewById(R.id.event_edit_professor);
 		Button confirmButton = (Button) findViewById(R.id.event_edit_button);
+		Button calendarButton = (Button) findViewById(R.id.btnCalAdd);
 		detailDatePicker = (DatePicker) findViewById(R.id.datePicker1);
 		Intent intent = getIntent();
 		if(intent.hasExtra("TITLE"))
@@ -96,6 +101,23 @@ public class EventDetailActivity extends Activity {
 					setResult(RESULT_OK);
 					finish();
 				}
+			}
+		});
+		calendarButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(Intent.ACTION_INSERT);
+				intent.setType("vnd.android.cursor.item/event");
+				intent.putExtra(Events.TITLE, detailTitleText.getText().toString());
+				intent.putExtra(Events.DESCRIPTION, detailBodyText.getText().toString());
+				GregorianCalendar calDate = new GregorianCalendar(detailDatePicker.getYear(),detailDatePicker.getMonth(), detailDatePicker.getDayOfMonth());
+				intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+						  calDate.getTimeInMillis());
+				intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+						  calDate.getTimeInMillis());
+				intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+				startActivity(intent);
 			}
 		});
 	}
