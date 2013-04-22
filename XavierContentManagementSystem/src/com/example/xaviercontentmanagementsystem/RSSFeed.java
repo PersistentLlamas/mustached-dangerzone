@@ -56,7 +56,6 @@ public class RSSFeed extends ListActivity {
 			newEvent.put(NODE_TITLE, xmlParser.getValue(nodeElement, NODE_TITLE));
 			newEvent.put(NODE_LINK, xmlParser.getValue(nodeElement, NODE_LINK));
 			newEvent.put(NODE_GUID, xmlParser.getValue(nodeElement, NODE_GUID));
-			Log.d("DESCRIPTION", xmlParser.getValue(nodeElement, NODE_DESCRIPTION));
 			newEvent.put(NODE_DESCRIPTION, xmlParser.getValue(nodeElement, NODE_DESCRIPTION));
 			newEvent.put(NODE_PUBDATE, xmlParser.getValue(nodeElement, NODE_PUBDATE));
 			
