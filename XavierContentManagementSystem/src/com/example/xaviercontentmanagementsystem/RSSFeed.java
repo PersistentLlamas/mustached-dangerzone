@@ -10,11 +10,9 @@ import org.w3c.dom.NodeList;
 import com.example.xaviercontentmanagementsystem.xml.XMLParser;
 
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.util.Log;
-import android.view.Menu;
 import android.view.View;
 import android.widget.AdapterView.*;
 import android.widget.AdapterView;
@@ -25,7 +23,7 @@ import android.widget.TextView;
 
 public class RSSFeed extends ListActivity {
 	
-	private static final String URL = "http://www.xavier.edu/pr/rss.xml";//"http://www.xavier.edu/pr/rss.xml";
+	private static final String URL = "http://www.xavier.edu/pr/rss.xml";
 	
 	//RSS Nodes
 	private static final String NODE_ITEM = "item";
@@ -46,8 +44,10 @@ public class RSSFeed extends ListActivity {
 		String xml = xmlParser.getXmlFromUrl(URL);
 		Document doc = xmlParser.getDomElement(xml);
 		
+		//Get all child nodes of each node with text "item"
 		NodeList nodeList = doc.getElementsByTagName(NODE_ITEM);
 		
+		//Store the nodes retrieved by the previous line 
 		for(int i = 0; i < nodeList.getLength(); i++)
 		{
 			HashMap<String, String> newEvent = new HashMap<String, String>();
@@ -56,15 +56,17 @@ public class RSSFeed extends ListActivity {
 			newEvent.put(NODE_TITLE, xmlParser.getValue(nodeElement, NODE_TITLE));
 			newEvent.put(NODE_LINK, xmlParser.getValue(nodeElement, NODE_LINK));
 			newEvent.put(NODE_GUID, xmlParser.getValue(nodeElement, NODE_GUID));
+			Log.d("DESCRIPTION", xmlParser.getValue(nodeElement, NODE_DESCRIPTION));
 			newEvent.put(NODE_DESCRIPTION, xmlParser.getValue(nodeElement, NODE_DESCRIPTION));
 			newEvent.put(NODE_PUBDATE, xmlParser.getValue(nodeElement, NODE_PUBDATE));
 			
 			rssItems.add(newEvent);
 		}
 		
+		//Creates a list adapter to display the data from the RSS feed to the user 
 		ListAdapter adapter = new SimpleAdapter(this, rssItems, R.layout.event_feed_list_item,
-				new String [] {NODE_TITLE, NODE_PUBDATE},
-				new int [] { R.id.name, R.id.description});
+				new String [] {NODE_TITLE, NODE_DESCRIPTION, NODE_PUBDATE},
+				new int [] { R.id.name, R.id.description, R.id.date});
 		setListAdapter(adapter);
 		ListView listView = getListView();
 		
@@ -75,10 +77,12 @@ public class RSSFeed extends ListActivity {
 			{
 				String name = ((TextView) view.findViewById(R.id.name)).getText().toString();
 				String description = ((TextView) view.findViewById(R.id.description)).getText().toString();
-				Log.d("NAME: ", name);
+				String date = ((TextView) view.findViewById(R.id.date)).getText().toString();
+
 				Intent intent = new Intent(getApplicationContext(), ListItemDetailActivity.class);
 				intent.putExtra(NODE_TITLE, name);
-				intent.putExtra(NODE_PUBDATE, description);
+				intent.putExtra(NODE_DESCRIPTION, description);
+				intent.putExtra(NODE_PUBDATE, date);
 				startActivity(intent);
 			}
 			

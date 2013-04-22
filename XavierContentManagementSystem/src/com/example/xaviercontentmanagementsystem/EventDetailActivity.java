@@ -58,10 +58,10 @@ public class EventDetailActivity extends Activity {
 		Button calendarButton = (Button) findViewById(R.id.btnCalAdd);
 		detailDatePicker = (DatePicker) findViewById(R.id.datePicker1);
 		Intent intent = getIntent();
-		if(intent.hasExtra("TITLE"))
+		if(intent.hasExtra("title"))
 		{
-			detailTitleText.setText(intent.getStringExtra("TITLE"));
-			detailBodyText.setText(intent.getStringExtra("DATE"));
+			detailTitleText.setText(intent.getStringExtra(ListItemDetailActivity.NODE_TITLE));
+			detailBodyText.setText(intent.getStringExtra(ListItemDetailActivity.NODE_DESCRIPTION));
 		}
 		else
 		{
