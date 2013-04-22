@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 
 public class NotesManagement extends Activity {
 
@@ -15,7 +16,9 @@ public class NotesManagement extends Activity {
 		setContentView(R.layout.notes);
 		
 		final Button submitButton = (Button) findViewById(R.id.submit_notes_button);
-		final Button cancelButton = (Button) findViewById(R.id.cancel_notes_button);
+		final Button clearButton = (Button) findViewById(R.id.clear_notes_button);
+		final EditText notesTitle = (EditText) findViewById(R.id.notes_title);
+		final EditText noteContent = (EditText) findViewById(R.id.notes_taken);
 		
 		submitButton.setOnClickListener(new View.OnClickListener()
 		{
@@ -26,12 +29,12 @@ public class NotesManagement extends Activity {
 			}
 		});
 		
-		cancelButton.setOnClickListener(new View.OnClickListener() {
+		clearButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				notesTitle.setText("");
+				noteContent.setText("");				
 			}
 		});
 	}

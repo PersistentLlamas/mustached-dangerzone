@@ -38,8 +38,8 @@ public final class R {
         public static final int btnEvents=0x7f090008;
         public static final int btnInternets=0x7f090009;
         public static final int btnNotes=0x7f09000a;
-        public static final int cancel_notes_button=0x7f09001f;
         public static final int category=0x7f09000b;
+        public static final int clear_notes_button=0x7f09001f;
         public static final int content=0x7f090005;
         public static final int date=0x7f090016;
         public static final int datePicker1=0x7f090011;
@@ -92,7 +92,7 @@ public final class R {
         public static final int assignment_button=0x7f06000e;
         public static final int button_add=0x7f060013;
         public static final int button_cal_add=0x7f060014;
-        public static final int cancel_button=0x7f06001a;
+        public static final int clear_button=0x7f06001a;
         public static final int event_edit_confirm=0x7f060008;
         public static final int event_edit_course=0x7f06000a;
         public static final int event_edit_description=0x7f060007;

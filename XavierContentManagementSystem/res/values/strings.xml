@@ -27,7 +27,7 @@
     <string name="notes_button">Notes</string>
     <string name="notes_title">Title</string>
     <string name="notes_main_content">Notes</string>
-    <string name="cancel_button">Cancel</string>
+    <string name="clear_button">Clear</string>
     <string name="submit_button">Submit</string>
 
 </resources>
