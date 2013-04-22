@@ -36,7 +36,7 @@ public class MainActivity extends Activity {
 		
 		final Button assignmentButton = (Button) findViewById(R.id.btnAssignment);
 		final Button eventsButton = (Button) findViewById(R.id.btnEvents);
-		final Button internetsButton = (Button) findViewById(R.id.btnEvents);
+		final Button internetsButton = (Button) findViewById(R.id.btnInternets);
 		
 		assignmentButton.setOnClickListener(new View.OnClickListener()
 		{
