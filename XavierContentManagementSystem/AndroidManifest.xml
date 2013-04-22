@@ -28,7 +28,7 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xaviercontentmanagementsystem.MainActivity" />
- >
+ >
         </activity>
         <activity
             android:name="com.example.xaviercontentmanagementsystem.EventDetailActivity"
@@ -55,6 +55,10 @@
         <activity
             android:name="com.example.xaviercontentmanagementsystem.RSSFeed"
             android:label="@string/title_activity_rssfeed" >
+        </activity>
+        <activity
+            android:name="com.example.xaviercontentmanagementsystem.NotesManagement"
+            android:label="@string/title_activity_notes_management" >
         </activity>
     </application>
 

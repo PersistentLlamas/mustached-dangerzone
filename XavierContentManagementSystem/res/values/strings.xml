@@ -23,5 +23,11 @@
     <string name="button_add">Add Event</string>
     <string name="button_cal_add">Add to Calendar</string>
     <string name="title_activity_rssfeed">RSSFeed</string>
+    <string name="title_activity_notes_management">NotesManagement</string>
+    <string name="notes_button">Notes</string>
+    <string name="notes_title">Title</string>
+    <string name="notes_main_content">Notes</string>
+    <string name="cancel_button">Cancel</string>
+    <string name="submit_button">Submit</string>
 
 </resources>
