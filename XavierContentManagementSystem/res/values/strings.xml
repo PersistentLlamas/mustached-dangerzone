@@ -21,5 +21,6 @@
     <string name="title_activity_list_item_detail">ListItemDetailActivity</string>
     <string name="button_add">Add Event</string>
     <string name="button_cal_add">Add to Calendar</string>
+    <string name="title_activity_rssfeed">RSSFeed</string>
 
 </resources>

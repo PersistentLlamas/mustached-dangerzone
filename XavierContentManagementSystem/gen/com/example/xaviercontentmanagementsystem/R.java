@@ -58,10 +58,11 @@ public final class R {
         public static final int activity_event_detail=0x7f030001;
         public static final int activity_list_item_detail=0x7f030002;
         public static final int activity_main=0x7f030003;
-        public static final int event_edit=0x7f030004;
-        public static final int event_feed_list_item=0x7f030005;
-        public static final int event_list=0x7f030006;
-        public static final int event_row=0x7f030007;
+        public static final int activity_rssfeed=0x7f030004;
+        public static final int event_edit=0x7f030005;
+        public static final int event_feed_list_item=0x7f030006;
+        public static final int event_list=0x7f030007;
+        public static final int event_row=0x7f030008;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
@@ -69,6 +70,7 @@ public final class R {
         public static final int event_detail=0x7f080002;
         public static final int list_item_detail=0x7f080003;
         public static final int listmenu=0x7f080004;
+        public static final int rssfeed=0x7f080005;
     }
     public static final class string {
         public static final int action_settings=0x7f060004;
@@ -91,6 +93,7 @@ public final class R {
         public static final int title_activity_event_detail=0x7f06000b;
         public static final int title_activity_event_overview=0x7f060003;
         public static final int title_activity_list_item_detail=0x7f060011;
+        public static final int title_activity_rssfeed=0x7f060014;
     }
     public static final class style {
         /** 

@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 public class ListItemDetailActivity extends Activity {
 
-	private static final String NODE_TITLE = "TITLE";
-	private static final String NODE_DATE = "DATE";
+	private static final String NODE_TITLE = "title";
+	private static final String NODE_DATE = "pubDate";
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

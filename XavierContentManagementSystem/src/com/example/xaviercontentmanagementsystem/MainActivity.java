@@ -62,7 +62,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(eventsButton.getContext(), BusinessCollegeEventsActivity.class);
+				Intent i = new Intent(eventsButton.getContext(), RSSFeed.class);
 				startActivityForResult(i, ACTIVITY_CREATE);
 			}
 		});
