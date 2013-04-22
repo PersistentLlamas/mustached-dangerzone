@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.net.Uri;
 
 public class MainActivity extends Activity {
 	
@@ -35,6 +36,7 @@ public class MainActivity extends Activity {
 		
 		final Button assignmentButton = (Button) findViewById(R.id.btnAssignment);
 		final Button eventsButton = (Button) findViewById(R.id.btnEvents);
+		final Button internetsButton = (Button) findViewById(R.id.btnEvents);
 		
 		assignmentButton.setOnClickListener(new View.OnClickListener()
 		{
@@ -64,6 +66,16 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				Intent i = new Intent(eventsButton.getContext(), RSSFeed.class);
 				startActivityForResult(i, ACTIVITY_CREATE);
+			}
+		});
+		
+		internetsButton.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.dineoncampus.com/xu"));
+				startActivity(browserIntent);
+				
 			}
 		});
 	}
