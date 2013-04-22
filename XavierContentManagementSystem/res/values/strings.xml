@@ -17,6 +17,7 @@
     <string name="menu_delete">Delete Event</string>
     <string name="assignment_button">View Assignments</string>
     <string name="events_button">View Events</string>
+    <string name="internets_button">View Caf Menu</string>
     <string name="title_activity_business_college_events">BusinessCollegeEventsActivity</string>
     <string name="title_activity_list_item_detail">ListItemDetailActivity</string>
     <string name="button_add">Add Event</string>
