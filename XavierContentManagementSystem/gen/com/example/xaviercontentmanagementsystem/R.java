@@ -38,7 +38,7 @@ public final class R {
         public static final int btnEvents=0x7f090008;
         public static final int btnInternets=0x7f090009;
         public static final int btnNotes=0x7f09000a;
-        public static final int cancel_notes_button=0x7f09001e;
+        public static final int cancel_notes_button=0x7f09001f;
         public static final int category=0x7f09000b;
         public static final int content=0x7f090005;
         public static final int date=0x7f090016;
@@ -62,7 +62,7 @@ public final class R {
         public static final int notes_taken=0x7f09001d;
         public static final int notes_title=0x7f09001c;
         public static final int slidingDrawer1=0x7f090004;
-        public static final int submit_notes_button=0x7f09001f;
+        public static final int submit_notes_button=0x7f09001e;
     }
     public static final class layout {
         public static final int activity_business_college_events=0x7f030000;

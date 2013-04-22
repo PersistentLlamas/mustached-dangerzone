@@ -12,7 +12,9 @@ import com.example.xaviercontentmanagementsystem.xml.XMLParser;
 import android.os.Bundle;
 import android.app.ListActivity;
 import android.content.Intent;
-import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.*;
 import android.widget.AdapterView;
@@ -23,7 +25,7 @@ import android.widget.TextView;
 
 public class RSSFeed extends ListActivity {
 	
-	private static final String URL = "http://www.xavier.edu/pr/rss.xml";
+private static String URL = "http://www.xavier.edu/pr/rss.xml";
 	
 	//RSS Nodes
 	private static final String NODE_ITEM = "item";
@@ -33,40 +35,16 @@ public class RSSFeed extends ListActivity {
 	private static final String NODE_DESCRIPTION = "description";
 	private static final String NODE_PUBDATE = "pubDate";
 	
+	private static ArrayList<HashMap<String, String>> rssItems = new ArrayList<HashMap<String, String>>();
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rssfeed);
+		GetRSSFromLocation(URL);
+	
+		CreateAndSetListViewAdapter();
 		
-		ArrayList<HashMap<String, String>> rssItems = new ArrayList<HashMap<String, String>>();
-		
-		XMLParser xmlParser = new XMLParser();
-		String xml = xmlParser.getXmlFromUrl(URL);
-		Document doc = xmlParser.getDomElement(xml);
-		
-		//Get all child nodes of each node with text "item"
-		NodeList nodeList = doc.getElementsByTagName(NODE_ITEM);
-		
-		//Store the nodes retrieved by the previous line 
-		for(int i = 0; i < nodeList.getLength(); i++)
-		{
-			HashMap<String, String> newEvent = new HashMap<String, String>();
-			Element nodeElement = (Element) nodeList.item(i);
-			
-			newEvent.put(NODE_TITLE, xmlParser.getValue(nodeElement, NODE_TITLE));
-			newEvent.put(NODE_LINK, xmlParser.getValue(nodeElement, NODE_LINK));
-			newEvent.put(NODE_GUID, xmlParser.getValue(nodeElement, NODE_GUID));
-			newEvent.put(NODE_DESCRIPTION, xmlParser.getValue(nodeElement, NODE_DESCRIPTION));
-			newEvent.put(NODE_PUBDATE, xmlParser.getValue(nodeElement, NODE_PUBDATE));
-			
-			rssItems.add(newEvent);
-		}
-		
-		//Creates a list adapter to display the data from the RSS feed to the user 
-		ListAdapter adapter = new SimpleAdapter(this, rssItems, R.layout.event_feed_list_item,
-				new String [] {NODE_TITLE, NODE_DESCRIPTION, NODE_PUBDATE},
-				new int [] { R.id.name, R.id.description, R.id.date});
-		setListAdapter(adapter);
 		ListView listView = getListView();
 		
 		listView.setOnItemClickListener(new OnItemClickListener(){
@@ -86,6 +64,45 @@ public class RSSFeed extends ListActivity {
 			}
 			
 		});
+	}
+	
+	private void CreateAndSetListViewAdapter()
+	{
+		//Creates a list adapter to display the data from the RSS feed to the user 
+		ListAdapter adapter = new SimpleAdapter(this, rssItems, R.layout.event_feed_list_item,
+					new String [] {NODE_TITLE, NODE_DESCRIPTION, NODE_PUBDATE},
+					new int [] { R.id.name, R.id.description, R.id.date});
+		setListAdapter(adapter);
+	}
+	
+	private static void GetRSSFromLocation(String URL)
+	{
+		XMLParser xmlParser = new XMLParser();
+		String xml = xmlParser.getXmlFromUrl(URL);
+		Document doc = xmlParser.getDomElement(xml);
+		
+		ParseAndAddItems(doc, xmlParser);
+	}
+	
+	private static void ParseAndAddItems(Document doc, XMLParser xmlParser)
+	{
+		//Get all child nodes of each node with text "item"
+		NodeList nodeList = doc.getElementsByTagName(NODE_ITEM);
+		
+		//Store the nodes retrieved by the previous line 
+		for(int i = 0; i < nodeList.getLength(); i++)
+		{
+			HashMap<String, String> newEvent = new HashMap<String, String>();
+			Element nodeElement = (Element) nodeList.item(i);
+			
+			newEvent.put(NODE_TITLE, xmlParser.getValue(nodeElement, NODE_TITLE));
+			newEvent.put(NODE_LINK, xmlParser.getValue(nodeElement, NODE_LINK));
+			newEvent.put(NODE_GUID, xmlParser.getValue(nodeElement, NODE_GUID));
+			newEvent.put(NODE_DESCRIPTION, xmlParser.getValue(nodeElement, NODE_DESCRIPTION));
+			newEvent.put(NODE_PUBDATE, xmlParser.getValue(nodeElement, NODE_PUBDATE));
+			
+			rssItems.add(newEvent);
+		}
 	}
 
 }

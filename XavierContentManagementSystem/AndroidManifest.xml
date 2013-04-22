@@ -28,11 +28,14 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xaviercontentmanagementsystem.MainActivity" />
- >
         </activity>
         <activity
             android:name="com.example.xaviercontentmanagementsystem.EventDetailActivity"
-            android:label="@string/title_activity_event_detail" >
+            android:label="@string/title_activity_event_detail" 
+            android:parentActivityName="com.example.xaviercontentmanagementsystem.EventOverviewActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xaviercontentmanagementsystem.EventOverviewActivity" />
         </activity>
 
         <provider
@@ -50,15 +53,27 @@
         </activity>
         <activity
             android:name="com.example.xaviercontentmanagementsystem.ListItemDetailActivity"
-            android:label="@string/title_activity_list_item_detail" >
+            android:label="@string/title_activity_list_item_detail" 
+            android:parentActivityName="com.example.xaviercontentmanagementsystem.RSSFeed" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xaviercontentmanagementsystem.RSSFeed" />
         </activity>
         <activity
             android:name="com.example.xaviercontentmanagementsystem.RSSFeed"
-            android:label="@string/title_activity_rssfeed" >
+            android:label="@string/title_activity_rssfeed" 
+            android:parentActivityName="com.example.xaviercontentmanagementsystem.MainActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xaviercontentmanagementsystem.MainActivity" />>
         </activity>
         <activity
             android:name="com.example.xaviercontentmanagementsystem.NotesManagement"
-            android:label="@string/title_activity_notes_management" >
+            android:label="@string/title_activity_notes_management" 
+			android:parentActivityName="com.example.xaviercontentmanagementsystem.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.xaviercontentmanagementsystem.MainActivity" />
         </activity>
     </application>
 
