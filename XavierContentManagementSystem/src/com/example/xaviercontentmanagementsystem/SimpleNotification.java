@@ -18,14 +18,6 @@ public class SimpleNotification extends Activity {
         setContentView(R.layout.activity_simple_notification);
     
 	}
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) 
-    {
-            // Inflate the menu; this adds items to the action bar if it is present.
-            getMenuInflater().inflate(R.menu.activity_simple_notification, menu);
-            return true;
-        
-    }
     
     // Send the notification when a the TriggerNotification button is clicked
     public void triggerNotification(View view)
