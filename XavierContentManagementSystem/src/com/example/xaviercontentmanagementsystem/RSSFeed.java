@@ -25,7 +25,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-//out of merge
+
 public class RSSFeed extends ListActivity {
 	
 private static String URL;
@@ -143,6 +143,19 @@ private static String URL;
 			
 			rssItems.add(newEvent);
 		}
+	}
+	
+	public boolean onMenuItemSelected(int featureId, MenuItem item) {
+
+	    int itemId = item.getItemId();
+	    switch (itemId) {
+	    case android.R.id.home:
+	    	finish();
+	        break;
+
+	    }
+
+	    return true;
 	}
 
 }
