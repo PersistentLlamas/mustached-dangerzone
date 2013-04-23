@@ -226,7 +226,6 @@ public class EventDetailActivity extends Activity {
 		values.put(EventTable.COLUMN_DUE_MONTH, dueMonth);
 		values.put(EventTable.COLUMN_DUE_YEAR, dueYear);
 		values.put(EventTable.COLUMN_FORMAT_DATE, dateFormat);
-		Log.d("FORMATED DATE", dateFormat);
 		
 		if(eventUri == null)
 		{

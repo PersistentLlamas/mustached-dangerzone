@@ -1,5 +1,7 @@
 package com.example.xaviercontentmanagementsystem;
 
+import java.util.GregorianCalendar;
+
 import com.example.xaviercontentmanagementsystem.contentprovider.EventsContentProvider;
 import com.example.xaviercontentmanagementsystem.database.EventTable;
 
@@ -7,11 +9,15 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.ListActivity;
 import android.app.LoaderManager;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
 import android.database.Cursor;
 import android.support.v4.widget.SimpleCursorAdapter;
+import android.util.Log;
 import android.view.ContextMenu;
 
 import android.view.ContextMenu.ContextMenuInfo;
@@ -21,6 +27,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class EventOverviewActivity extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor>
 {
@@ -30,6 +37,7 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 	private static final int DIVIDER_HEIGHT = 2;
 	
 	private SimpleCursorAdapter adapter;
+	//private NotificationManager notificationManager;
 	
 	/*
 	 * This method is called on creating of EventOverviewActivity and sets up all necessary things.
@@ -44,10 +52,34 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.event_list);
 		this.getListView().setDividerHeight(DIVIDER_HEIGHT);
+		//notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		fillData();
 		registerForContextMenu(getListView());
+/*		ListView listView = (ListView) findViewById(android.R.id.list);
+		for(int i = 0; i < listView.getAdapter().getCount(); i++){
+			view = listView.getAdapter().getView(i, null, null);
+		    TextView name = (TextView) view.findViewById(R.id.label);
+		    TextView date = (TextView) view.findViewById(R.id.dueDateRow);
+		    String dueDate = date.getText().toString();
+		    Log.d("DATE", dueDate);
+		    String[] dates = dueDate.split("/");
+		    GregorianCalendar DateofAssignment = new GregorianCalendar(Integer.parseInt(dates[2]), Integer.parseInt(dates[0]), Integer.parseInt(dates[1]));
+		    GregorianCalendar CurrentDate = new GregorianCalendar();
+		    if((DateofAssignment.YEAR == CurrentDate.YEAR)
+		    		&&(DateofAssignment.MONTH == CurrentDate.MONTH)
+		    		&&(DateofAssignment.DAY_OF_MONTH == CurrentDate.DAY_OF_MONTH))
+		    		{
+						Notification notification = new Notification.Builder(this)
+							.setSmallIcon(R.drawable.ic_launcher)  // Notification icon shown in header
+							.setContentTitle(name.getText().toString() + " is due!") 
+							.setContentText("Your Assignment is Due!")
+							.build(); 
+						notification.flags|= Notification.FLAG_AUTO_CANCEL;
+						notificationManager.notify(0,notification);
+		    		}
+		}*/
 	}
-	
+
 	/*
 	 * This method inflates the options menu.
 	 *
@@ -161,9 +193,10 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 
 		getLoaderManager().initLoader(0, null, this);
 		adapter = new SimpleCursorAdapter(this, R.layout.event_row, null, from,
-				to, 0);
-
+				to, 2);
+		
 		setListAdapter(adapter);
+		Log.d("COUNT THINGY",((Integer)adapter.getCount()).toString());
 	}
 	
 	@Override
