@@ -10,6 +10,7 @@ import org.w3c.dom.NodeList;
 import com.example.xaviercontentmanagementsystem.xml.XMLParser;
 
 import android.os.Bundle;
+import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Intent;
 import android.view.Menu;
@@ -18,14 +19,16 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.*;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class RSSFeed extends ListActivity {
 	
-private static String URL = "http://www.xavier.edu/pr/rss.xml";
+private static String URL;
 	
 	//RSS Nodes
 	private static final String NODE_ITEM = "item";
@@ -41,9 +44,56 @@ private static String URL = "http://www.xavier.edu/pr/rss.xml";
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rssfeed);
-		GetRSSFromLocation(URL);
+		
+		URL = "http://www.xavier.edu/pr/rss.xml";
+		
+		ActionBar actionBar = getActionBar();
+	    // add the custom view to the action bar
+		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM
+		           | ActionBar.DISPLAY_SHOW_HOME);
+	    actionBar.setCustomView(R.layout.rss_action_bar_spinner);
+	    final Spinner rss_spinner = (Spinner) actionBar.getCustomView().findViewById(R.id.feed);
+	    Button rss_refresh = (Button) actionBar.getCustomView().findViewById(R.id.refresh);
+	    rss_refresh.setOnClickListener(new View.OnClickListener()
+	    {
+
+			@Override
+			public void onClick(View v) {
+				RenderView(rss_spinner.getSelectedItem().toString());
+				
+			}
+	    	
+	    });
+		/*rss_spinner.setOnItemClickListener(new OnItemClickListener()
+			{
+
+				@Override
+				public void onItemClick(AdapterView<?> arg0, View arg1,
+						int arg2, long arg3) {
+					
+					RenderView(rss_spinner.getSelectedItem().toString());
+				}
+			   
+			});*/
+		RenderView(URL);
+		
+	}
 	
+	private void RenderView(String url)
+	{
+		rssItems.clear();
+		GetRSSFromLocation(url);
+		
 		CreateAndSetListViewAdapter();
+	}
+	
+	private void CreateAndSetListViewAdapter()
+	{
+		//Creates a list adapter to display the data from the RSS feed to the user 
+		ListAdapter adapter = new SimpleAdapter(this, rssItems, R.layout.event_feed_list_item,
+					new String [] {NODE_TITLE, NODE_DESCRIPTION, NODE_PUBDATE},
+					new int [] { R.id.name, R.id.description, R.id.date});
+		setListAdapter(adapter);
 		
 		ListView listView = getListView();
 		
@@ -62,17 +112,7 @@ private static String URL = "http://www.xavier.edu/pr/rss.xml";
 				intent.putExtra(NODE_PUBDATE, date);
 				startActivity(intent);
 			}
-			
 		});
-	}
-	
-	private void CreateAndSetListViewAdapter()
-	{
-		//Creates a list adapter to display the data from the RSS feed to the user 
-		ListAdapter adapter = new SimpleAdapter(this, rssItems, R.layout.event_feed_list_item,
-					new String [] {NODE_TITLE, NODE_DESCRIPTION, NODE_PUBDATE},
-					new int [] { R.id.name, R.id.description, R.id.date});
-		setListAdapter(adapter);
 	}
 	
 	private static void GetRSSFromLocation(String URL)

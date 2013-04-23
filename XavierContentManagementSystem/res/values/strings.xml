@@ -29,5 +29,6 @@
     <string name="notes_main_content">Notes</string>
     <string name="clear_button">Clear</string>
     <string name="submit_button">Submit</string>
+    <string name="refresh">Refresh</string>
 
 </resources>

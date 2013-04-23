@@ -10,6 +10,7 @@ package com.example.xaviercontentmanagementsystem;
 public final class R {
     public static final class array {
         public static final int priorities=0x7f050000;
+        public static final int rss_items=0x7f050001;
     }
     public static final class attr {
     }
@@ -31,7 +32,7 @@ public final class R {
         public static final int LinearLayout01=0x7f09000c;
         public static final int TextView01=0x7f090019;
         public static final int TextView02=0x7f09001b;
-        public static final int action_settings=0x7f090021;
+        public static final int action_settings=0x7f090023;
         public static final int btnAdd=0x7f090003;
         public static final int btnAssignment=0x7f090007;
         public static final int btnCalAdd=0x7f090013;
@@ -52,15 +53,17 @@ public final class R {
         public static final int event_edit_description=0x7f09000e;
         public static final int event_edit_professor=0x7f09000f;
         public static final int event_edit_summary=0x7f09000d;
+        public static final int feed=0x7f090020;
         public static final int handle=0x7f090006;
         public static final int icon=0x7f090017;
-        public static final int insert=0x7f090022;
+        public static final int insert=0x7f090024;
         public static final int label=0x7f090018;
-        public static final int menu_settings=0x7f090020;
+        public static final int menu_settings=0x7f090022;
         public static final int name=0x7f090014;
         public static final int name_label=0x7f090000;
         public static final int notes_taken=0x7f09001d;
         public static final int notes_title=0x7f09001c;
+        public static final int refresh=0x7f090021;
         public static final int slidingDrawer1=0x7f090004;
         public static final int submit_notes_button=0x7f09001e;
     }
@@ -76,6 +79,7 @@ public final class R {
         public static final int event_list=0x7f030008;
         public static final int event_row=0x7f030009;
         public static final int notes=0x7f03000a;
+        public static final int rss_action_bar_spinner=0x7f03000b;
     }
     public static final class menu {
         public static final int activity_main=0x7f080000;
@@ -108,6 +112,7 @@ public final class R {
         public static final int notes_button=0x7f060017;
         public static final int notes_main_content=0x7f060019;
         public static final int notes_title=0x7f060018;
+        public static final int refresh=0x7f06001c;
         public static final int submit_button=0x7f06001b;
         public static final int title_activity_business_college_events=0x7f060011;
         public static final int title_activity_event_detail=0x7f06000b;
