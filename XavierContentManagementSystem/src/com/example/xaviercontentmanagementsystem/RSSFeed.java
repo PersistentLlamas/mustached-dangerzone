@@ -37,7 +37,7 @@ private static String URL;
 	private static final String NODE_GUID = "guid";
 	private static final String NODE_DESCRIPTION = "description";
 	private static final String NODE_PUBDATE = "pubDate";
-	
+	//test
 	private static ArrayList<HashMap<String, String>> rssItems = new ArrayList<HashMap<String, String>>();
 	
 	@Override
