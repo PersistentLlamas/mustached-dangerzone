@@ -127,7 +127,7 @@ private static String URL;
 				String description = ((TextView) view.findViewById(R.id.description)).getText().toString();
 				String date = ((TextView) view.findViewById(R.id.date)).getText().toString();
 
-				Intent intent = new Intent(getApplicationContext(), ListItemDetailActivity.class);
+				Intent intent = new Intent(getApplicationContext(), RSSItemDetailActivity.class);
 				intent.putExtra(NODE_TITLE, name);
 				intent.putExtra(NODE_DESCRIPTION, description);
 				intent.putExtra(NODE_PUBDATE, date);

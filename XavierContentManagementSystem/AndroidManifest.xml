@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.example.xaviercontentmanagementsystem.EventOverviewActivity"
+            android:name="com.example.xaviercontentmanagementsystem.AssignmentOverviewActivity"
             android:label="@string/title_activity_event_overview"
             android:parentActivityName="com.example.xaviercontentmanagementsystem.MainActivity" >
             <meta-data
@@ -30,9 +30,9 @@
                 android:value="com.example.xaviercontentmanagementsystem.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.xaviercontentmanagementsystem.EventDetailActivity"
+            android:name="com.example.xaviercontentmanagementsystem.AssignmentDetailActivity"
             android:label="@string/title_activity_event_detail"
-            android:parentActivityName="com.example.xaviercontentmanagementsystem.EventOverviewActivity" >
+            android:parentActivityName="com.example.xaviercontentmanagementsystem.AssignmentOverviewActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xaviercontentmanagementsystem.EventOverviewActivity" />
@@ -43,6 +43,10 @@
             android:authorities="com.example.xaviercontentmanagementsystem.contentprovider" >
         </provider>
 
+        <provider
+            android:name="com.example.xaviercontentmanagementsystem.contentprovider.NotesContentProvider"
+            android:authorities="com.example.xaviercontentmanagementsystem.contentproviderNotes" >
+        </provider>
         <activity
             android:name="com.example.xaviercontentmanagementsystem.BusinessCollegeEventsActivity"
             android:label="@string/title_activity_business_college_events"
@@ -52,7 +56,7 @@
                 android:value="com.example.xaviercontentmanagementsystem.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.xaviercontentmanagementsystem.ListItemDetailActivity"
+            android:name="com.example.xaviercontentmanagementsystem.RSSItemDetailActivity"
             android:label="@string/title_activity_list_item_detail"
             android:parentActivityName="com.example.xaviercontentmanagementsystem.RSSFeed" >
             <meta-data
@@ -69,7 +73,7 @@
 >
         </activity>
         <activity
-            android:name="com.example.xaviercontentmanagementsystem.NotesManagement"
+            android:name="com.example.xaviercontentmanagementsystem.NotesOverviewActivity"
             android:label="@string/title_activity_notes_management"
             android:parentActivityName="com.example.xaviercontentmanagementsystem.MainActivity" >
             <meta-data
@@ -77,9 +81,9 @@
                 android:value="com.example.xaviercontentmanagementsystem.MainActivity" />
         </activity>
         <activity
-            android:name="com.example.xaviercontentmanagementsystem.Notes"
+            android:name="com.example.xaviercontentmanagementsystem.NotesDetailActivity"
             android:label="@string/title_activity_notes"
-			android:parentActivityName="com.example.xaviercontentmanagementsystem.NotesManagement" >
+			android:parentActivityName="com.example.xaviercontentmanagementsystem.NotesOverviewActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.example.xaviercontentmanagementsystem.NotesManagement"/>

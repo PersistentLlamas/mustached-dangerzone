@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class EventDatabaseHelper extends SQLiteOpenHelper 
 {
-	private static final String DATABASE_NAME = "xubccms.db";
+	private static final String DATABASE_NAME = "xucms.db";
 	private static final int DATABASE_VERSION = 1;
 	
 	public EventDatabaseHelper(Context context)
@@ -23,6 +23,7 @@ public class EventDatabaseHelper extends SQLiteOpenHelper
 	public void onCreate(SQLiteDatabase database)
 	{
 		EventTable.onCreate(database);
+		NotesTable.onCreate(database);
 	}
 	
 	@Override
@@ -33,5 +34,6 @@ public class EventDatabaseHelper extends SQLiteOpenHelper
 	public void onUpgrade(SQLiteDatabase database, int oldVersion, int newVersion)
 	{
 		EventTable.onUpgrade(database, oldVersion, newVersion);
+		NotesTable.onUpgrade(database, oldVersion, newVersion);
 	}
 }

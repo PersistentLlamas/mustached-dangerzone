@@ -29,7 +29,7 @@ import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class EventOverviewActivity extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor>
+public class AssignmentOverviewActivity extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor>
 {
 	private static final int ACTIVITY_CREATE = 0;
 	private static final int ACTIVITY_EDIT = 1;
@@ -141,7 +141,7 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 	 */
 	
 	private void createEvent() {
-		Intent i = new Intent(this, EventDetailActivity.class);
+		Intent i = new Intent(this, AssignmentDetailActivity.class);
 		startActivityForResult(i, ACTIVITY_CREATE);
 	}
 	
@@ -159,7 +159,7 @@ public class EventOverviewActivity extends ListActivity implements LoaderManager
 	@Override
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 		super.onListItemClick(l, v, position, id);
-		Intent i = new Intent(this, EventDetailActivity.class);
+		Intent i = new Intent(this, AssignmentDetailActivity.class);
 		Uri eventUri = Uri.parse(EventsContentProvider.CONTENT_URI + "/" + id);
 		i.putExtra(EventsContentProvider.CONTENT_ITEM_TYPE, eventUri);
 

@@ -85,7 +85,7 @@ public class BusinessCollegeEventsActivity extends ListActivity {
 				String name = ((TextView) view.findViewById(R.id.name)).getText().toString();
 				String description = ((TextView) view.findViewById(R.id.description)).getText().toString();
 				
-				Intent intent = new Intent(getApplicationContext(), ListItemDetailActivity.class);
+				Intent intent = new Intent(getApplicationContext(), RSSItemDetailActivity.class);
 				intent.putExtra(NODE_TITLE, name);
 				intent.putExtra(NODE_DATE, description);
 				startActivity(intent);

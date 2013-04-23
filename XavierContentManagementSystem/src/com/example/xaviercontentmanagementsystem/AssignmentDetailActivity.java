@@ -15,6 +15,9 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -22,7 +25,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-public class EventDetailActivity extends Activity {
+public class AssignmentDetailActivity extends Activity {
 
 	private Spinner detailCategory;
 	private EditText detailTitleText;
@@ -54,14 +57,13 @@ public class EventDetailActivity extends Activity {
 		detailBodyText = (EditText) findViewById(R.id.event_edit_description);
 		detailCourseText = (EditText) findViewById(R.id.event_edit_course);
 		detailProfessorText = (EditText) findViewById(R.id.event_edit_professor);
-		Button confirmButton = (Button) findViewById(R.id.event_edit_button);
 		Button calendarButton = (Button) findViewById(R.id.btnCalAdd);
 		detailDatePicker = (DatePicker) findViewById(R.id.datePicker1);
 		Intent intent = getIntent();
 		if(intent.hasExtra("title"))
 		{
-			detailTitleText.setText(intent.getStringExtra(ListItemDetailActivity.NODE_TITLE));
-			detailBodyText.setText(intent.getStringExtra(ListItemDetailActivity.NODE_DESCRIPTION));
+			detailTitleText.setText(intent.getStringExtra(RSSItemDetailActivity.NODE_TITLE));
+			detailBodyText.setText(intent.getStringExtra(RSSItemDetailActivity.NODE_DESCRIPTION));
 		}
 		else
 		{
@@ -75,34 +77,6 @@ public class EventDetailActivity extends Activity {
 				fillData(eventUri);
 			}
 		}
-		confirmButton.setOnClickListener(new View.OnClickListener()
-			{
-				
-			/*
-			 * This method adds an event when the button is clicked.
-			 *
-			 * @param v, a View reference to the clicked object.
-			 *
-			 * @return void
-			 *
-			 * (non-Javadoc)
-			 * @see android.widget.Button
-			 */
-			
-			@Override
-			public void onClick(View v) 
-			{
-				if(TextUtils.isEmpty(detailTitleText.getText().toString()))
-				{
-					makeToast();
-				}
-				else
-				{
-					setResult(RESULT_OK);
-					finish();
-				}
-			}
-		});
 		calendarButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -122,6 +96,35 @@ public class EventDetailActivity extends Activity {
 		});
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.event_detail, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.submit_assignment:
+			createEvent();
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	private void createEvent()
+	{
+		if(TextUtils.isEmpty(detailTitleText.getText().toString()))
+		{
+			makeToast();
+		}
+		else
+		{
+			setResult(RESULT_OK);
+			finish();
+		}
+	}
 	/*
 	 * This method fills in the database based on the given uri.
 	 *
@@ -243,7 +246,7 @@ public class EventDetailActivity extends Activity {
 	
 	private void makeToast()
 	{
-		Toast.makeText(EventDetailActivity.this, "Please give a summary", Toast.LENGTH_LONG).show();
+		Toast.makeText(AssignmentDetailActivity.this, "Please give a summary", Toast.LENGTH_LONG).show();
 		Log.d("TOAST", "Toast was made, and it was good. and i had a really really really good time.");
 	}
 

@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(assignmentButton.getContext(), EventOverviewActivity.class);
+				Intent i = new Intent(assignmentButton.getContext(), AssignmentOverviewActivity.class);
 				startActivityForResult(i, ACTIVITY_CREATE);
 				
 			}
@@ -92,27 +92,10 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent i = new Intent(eventsButton.getContext(), NotesManagement.class);
+				Intent i = new Intent(eventsButton.getContext(), NotesOverviewActivity.class);
 				startActivityForResult(i, ACTIVITY_CREATE);				
 			}
 		});
-	}
-
-	/*
-	 * This method inflates the menu and adds items to the action bar if it is present.
-	 *
-	 * @param menu, the options menu we are inflating.
-	 *
-	 * @return true
-	 *
-	 *(non-Javadoc)
-	 * @see android.app.Activity#onCreateOptionsMenu(android.view.Menu)
-	 */
-	
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.activity_main, menu);
-		return true;
 	}
 
 }

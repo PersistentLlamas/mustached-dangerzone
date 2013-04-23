@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class ListItemDetailActivity extends Activity {
+public class RSSItemDetailActivity extends Activity {
 
 	public static final String NODE_TITLE = "title";
 	public static final String NODE_DESCRIPTION = "description";
@@ -40,7 +40,7 @@ public class ListItemDetailActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Intent toAddAssignment = new Intent(getApplicationContext(), EventDetailActivity.class);
+				Intent toAddAssignment = new Intent(getApplicationContext(), AssignmentDetailActivity.class);
 				String title = ((TextView) findViewById(R.id.name_label)).getText().toString();
 				String description = ((TextView) findViewById(R.id.description_label)).getText().toString();
 				toAddAssignment.putExtra(NODE_TITLE, title);
