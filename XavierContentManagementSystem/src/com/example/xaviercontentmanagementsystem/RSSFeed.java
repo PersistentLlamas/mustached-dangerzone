@@ -25,7 +25,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-
+//out of merge
 public class RSSFeed extends ListActivity {
 	
 private static String URL;
