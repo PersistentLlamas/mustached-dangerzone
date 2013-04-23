@@ -83,7 +83,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onClick(View v) {
-				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.dineoncampus.com/xu"));
+				Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.dineoncampus.com/xu/show.cfm?cmd=menus2&venueName=Hoff%20Dining%20Commons"));
 				startActivity(browserIntent);
 			}
 		});
