@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import android.net.Uri;
 
 public class MainActivity extends Activity {
@@ -38,7 +39,11 @@ public class MainActivity extends Activity {
 		final Button eventsButton = (Button) findViewById(R.id.btnEvents);
 		final Button internetsButton = (Button) findViewById(R.id.btnInternets);
 		final Button notesButton = (Button) findViewById(R.id.btnNotes);
-		
+		Intent intent = getIntent();
+		if(intent.hasExtra("ERROR"))
+		{
+			Toast.makeText(MainActivity.this, intent.getStringExtra("ERROR"), Toast.LENGTH_LONG).show();
+		}
 		assignmentButton.setOnClickListener(new View.OnClickListener()
 		{
 			/*

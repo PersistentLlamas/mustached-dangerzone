@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="rss_items">
-        <item>http://www.xavier.edu/news/rss.xml</item>
-        <item>http://www.xavier.edu/pr/rss.xml</item>
-        <item>http://www.xavier.edu/pr/xunews/rss.xml</item>
-        <item>https://api.twitter.com/1/statuses/user_timeline.rss?screen_name=XUAthletics</item>
+        <item>Xavier Featured News</item>
+        <item>Xavier News Releases</item>
+        <item>Xavier in the News</item>
+        <item>Xavier Athletics</item>
     </string-array>
 </resources>

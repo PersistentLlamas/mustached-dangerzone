@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.app.ActionBar;
 import android.app.ListActivity;
 import android.content.Intent;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -25,6 +26,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class RSSFeed extends ListActivity {
 	
@@ -45,24 +47,42 @@ private static String URL;
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_rssfeed);
 		
-		URL = "http://www.xavier.edu/pr/rss.xml";
-		
+		URL = "http://www.xavier.edu/news/rss.xml";
+		Toast.makeText(RSSFeed.this, "Loading", Toast.LENGTH_SHORT).show();
 		ActionBar actionBar = getActionBar();
 	    // add the custom view to the action bar
 		actionBar.setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM
 		           | ActionBar.DISPLAY_SHOW_HOME);
 	    actionBar.setCustomView(R.layout.rss_action_bar_spinner);
 	    final Spinner rss_spinner = (Spinner) actionBar.getCustomView().findViewById(R.id.feed);
-	    Button rss_refresh = (Button) actionBar.getCustomView().findViewById(R.id.refresh);
-	    rss_refresh.setOnClickListener(new View.OnClickListener()
-	    {
+	    rss_spinner.setOnItemSelectedListener(new OnItemSelectedListener() {
+	        @Override
+	        public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+	        	Toast.makeText(RSSFeed.this, "Loading", Toast.LENGTH_SHORT).show();
+	        	String selectedFeed = rss_spinner.getSelectedItem().toString();
+	        	if(selectedFeed.equals("Xavier Featured News"))
+	        	{
+	        		RenderView("http://www.xavier.edu/news/rss.xml");
+	        	}
+	        	else if(selectedFeed.equals("Xavier News Releases"))
+	        	{
+	        		RenderView("http://www.xavier.edu/pr/rss.xml");
+	        	}
+	        	else if(selectedFeed.equals("Xavier in the News"))
+	        	{
+	        		RenderView("http://www.xavier.edu/pr/xunews/rss.xml");
+	        	}
+	        	else if(selectedFeed.equals("Xavier Athletics"))
+	        	{
+	        		RenderView("https://api.twitter.com/1/statuses/user_timeline.rss?screen_name=XUAthletics");
+	        	}
+	        }
 
-			@Override
-			public void onClick(View v) {
-				RenderView(rss_spinner.getSelectedItem().toString());
-				
-			}
-	    	
+	        @Override
+	        public void onNothingSelected(AdapterView<?> parentView) 
+	        {
+	        }
+
 	    });
 		/*rss_spinner.setOnItemClickListener(new OnItemClickListener()
 			{
@@ -76,6 +96,7 @@ private static String URL;
 			   
 			});*/
 		RenderView(URL);
+		
 		
 	}
 	
@@ -115,16 +136,24 @@ private static String URL;
 		});
 	}
 	
-	private static void GetRSSFromLocation(String URL)
+	private void GetRSSFromLocation(String URL)
 	{
-		XMLParser xmlParser = new XMLParser();
-		String xml = xmlParser.getXmlFromUrl(URL);
-		Document doc = xmlParser.getDomElement(xml);
-		
-		ParseAndAddItems(doc, xmlParser);
+		try
+		{
+			XMLParser xmlParser = new XMLParser();
+			String xml = xmlParser.getXmlFromUrl(URL);
+			Document doc = xmlParser.getDomElement(xml);	
+			ParseAndAddItems(doc, xmlParser);
+		}
+		catch(Exception e)
+		{
+			Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+			intent.putExtra("ERROR", "Something went wrong with the connection, check your internet settings");
+			startActivity(intent);
+		}
 	}
 	
-	private static void ParseAndAddItems(Document doc, XMLParser xmlParser)
+	private void ParseAndAddItems(Document doc, XMLParser xmlParser)
 	{
 		//Get all child nodes of each node with text "item"
 		NodeList nodeList = doc.getElementsByTagName(NODE_ITEM);
