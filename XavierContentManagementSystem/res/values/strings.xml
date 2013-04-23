@@ -30,5 +30,7 @@
     <string name="clear_button">Clear</string>
     <string name="submit_button">Submit</string>
     <string name="refresh">Refresh</string>
+    <string name="title_activity_notes">Notes</string>
+    <string name="add_new_note_button">Add Note </string>
 
 </resources>
