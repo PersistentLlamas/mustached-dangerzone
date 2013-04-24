@@ -1,0 +1,62 @@
+Noah Stromberg
+Donovan Herbert
+Carl Mai
+Jon Philo
+Matt Lochmueller
+
+04/23/2013
+
+Personal Content Management Android Application
+
+
+Major Components:
+
+SQLite Databases - This project implements SQLite databases using the database software local to Android (This project
+was done on Nexus 7 tablets)
+Events Database - This database holds all the user-created events for display and editing on the Events screen
+Notes Database - This database holds all the user-created notes for display and editing from the Notes section of the 
+application.
+Views - This project implements multiple views for the user to switch between for different sections of the application
+ViewFlipper - This view takes care of the slideshow on the opening screen
+AssignmentDetail - This view brings up the details of a specific assignment for the user to edit or create, including 
+text fields and a date spinner
+AssignmentOverview - This view shows all the currently stored assignments, and allows the user to add events or delete 
+assignments. When an assignment is clicked on, the user is taken to the AssignmentDetail view.
+Notes - This view implements the note-taking feature of the application. It allows the user to both view notes and edit 
+and create new notes.
+RSSFeed - This view allows the user to view content from specific RSS feeds and make them into events stored in the 
+system. User cannot currently add their own RSS feeds.
+RSSItemDetailActivity - This view is brought up when the user clicks on an RSS feed event and shows the details and 
+allows the event to be added to the assignments list
+
+Not Yet Completed
+
+Notifications - Given more time, we would’ve liked to implement a notification system. We have the main code for the 
+notifications in the project, but it does not currently work with our system. All that needs to be done is to compare 
+all the items in the ListView (harder than it sounds) to the current date and throw a notification if they match.
+Add User-given RSS Feeds - We current have hard-coded RSS feeds that the user can switch between, but they cannot 
+currently add their own RSS feeds to the list. This feature would be good, but it is a bit too complicated for us to 
+implement at this time.
+Add Google Drive Functionality - the Note function is a primitive version of Drive functionality, as this would allow 
+the user to access their notes later from any location that can access their Drive account.
+
+
+Functionality
+
+On the opening screen, the user sees a slideshow of Xavier-related pictures and a SlidingDrawer that contains the views 
+that the user can switch to. From the SlidingDrawer, which is pulled up from the bottom of the screen, the user can 
+navigate to the Notes view, the Assignments view, the Event view, or the Caf menu. 
+The Caf menu button takes the user to the DineOnCampus Xavier website, from which the user can view the Caf’s menu for 
+the day. 
+The Event view allows the user to switch between RSS feeds by clicking a drop-down menu from the top-center of the view 
+and selecting their desired RSS feed. The feed items can be clicked on to display the event details and to allow the 
+event to be added to the Assignments list. 
+The Assignments view contains all the current assignments, and allows the user to edit, create, and delete events. 
+Clicking on an event allows the user to edit it, while a button allows the user to create new assignments (labeled 
+“Create Assignment”), and holding down your finger on the event will bring up a toast (a short message to the user) in 
+which the user must click on the Delete option in order to delete the chosen Assignment. When a user chooses to create 
+or edit an assignment, a new view is brought up from which the user can add a title, a class, a professor, a summary, 
+and a due date. The due date is chosen by a DateSpinner, while the other fields are all TextFields. Buttons in the top 
+of the view labeled “Confirm” and “Add to Calendar” allow the user to add the assignment to the database or to add the 
+assignment to their Google Calendar, which is linked through the Android API. 
+Lastly, the Notes view allows the user to create, edit and store notes in much the same fashion as the Assignments. A note is made up of a title and a body, each of which are TextFields. The “Submit” button allows the user to submit and store the note, while the “Clear” button clears the TextFields.
