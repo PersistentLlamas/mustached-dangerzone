@@ -1,5 +1,8 @@
 package com.example.xaviercontentmanagementsystem;
 
+import java.util.ArrayList;
+import java.util.Random;
+
 import com.example.xaviercontentmanagementsystem.contentprovider.EventsContentProvider;
 import com.example.xaviercontentmanagementsystem.database.EventTable;
 
@@ -11,12 +14,16 @@ import android.database.Cursor;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.ViewFlipper;
 import android.net.Uri;
 
 public class MainActivity extends Activity {
 	
 	private static final int ACTIVITY_CREATE = 0;
+	private ViewFlipper flipper;
 	
 	/*
 	 * This method is called on creation and creates the add assignment button and creates a listener for it.
@@ -48,6 +55,34 @@ public class MainActivity extends Activity {
 		{
 			Toast.makeText(MainActivity.this, intent.getStringExtra("ERROR"), Toast.LENGTH_LONG).show();
 		}
+		
+		flipper = (ViewFlipper) findViewById(R.id.viewFlipper1);
+		int[] images = 
+			{
+				R.drawable.xavierimg2,R.drawable.xavierimg3,
+				R.drawable.xavierimg4,R.drawable.xavierimg5,
+				R.drawable.xavierimg7
+			};
+		Random rand = new Random();
+		ArrayList<Integer> final_images = new ArrayList<Integer>();
+		for(int i = 0; i < 4; i++){
+			int index = rand.nextInt(images.length);
+			while(final_images.contains(images[index])){
+				index = rand.nextInt(images.length);
+			}
+			final_images.add(images[index]);
+		}
+		if(flipper.getChildCount() < 6){
+		for(int i =0; i< final_images.size(); i++)
+		{
+			setFlipperImage(final_images.get(i));
+		}
+		}
+		flipper.setFlipInterval(4000);
+		flipper.startFlipping();
+		
+		
+		
 		assignmentButton.setOnClickListener(new View.OnClickListener()
 		{
 			/*
@@ -97,5 +132,12 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
-
+	private void setFlipperImage(int i) {
+		ImageView image = new ImageView(getApplicationContext());
+		image.setLayoutParams(new GridView.LayoutParams(1280, 1280));
+		image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+		image.setBackgroundResource(i);
+		flipper.addView(image);
+		
+	}
 }

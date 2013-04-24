@@ -32,5 +32,6 @@
     <string name="refresh">Refresh</string>
     <string name="title_activity_notes">Notes</string>
     <string name="add_new_note_button">Add Note </string>
+    <string name="str_xavierimg1">Image1</string>
 
 </resources>
