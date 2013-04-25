@@ -127,6 +127,7 @@ public class MainActivity extends Activity {
 			}
 		});
 	}
+
 	private void setFlipperImage(int i) {
 		ImageView image = new ImageView(getApplicationContext());
 		image.setLayoutParams(new GridView.LayoutParams(1280, 1280));
@@ -135,4 +136,6 @@ public class MainActivity extends Activity {
 		flipper.addView(image);
 		
 	}
+	
+	
 }
