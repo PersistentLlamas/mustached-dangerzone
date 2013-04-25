@@ -18,8 +18,6 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -57,7 +55,6 @@ public class AssignmentDetailActivity extends Activity {
 		detailBodyText = (EditText) findViewById(R.id.event_edit_description);
 		detailCourseText = (EditText) findViewById(R.id.event_edit_course);
 		detailProfessorText = (EditText) findViewById(R.id.event_edit_professor);
-		Button calendarButton = (Button) findViewById(R.id.btnCalAdd);
 		detailDatePicker = (DatePicker) findViewById(R.id.datePicker1);
 		Intent intent = getIntent();
 		if(intent.hasExtra("title"))
@@ -77,23 +74,6 @@ public class AssignmentDetailActivity extends Activity {
 				fillData(eventUri);
 			}
 		}
-		calendarButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent(Intent.ACTION_INSERT);
-				intent.setType("vnd.android.cursor.item/event");
-				intent.putExtra(Events.TITLE, detailTitleText.getText().toString());
-				intent.putExtra(Events.DESCRIPTION, detailBodyText.getText().toString());
-				GregorianCalendar calDate = new GregorianCalendar(detailDatePicker.getYear(),detailDatePicker.getMonth(), detailDatePicker.getDayOfMonth());
-				intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
-						  calDate.getTimeInMillis());
-				intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
-						  calDate.getTimeInMillis());
-				intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
-				startActivity(intent);
-			}
-		});
 	}
 
 	@Override
@@ -109,6 +89,18 @@ public class AssignmentDetailActivity extends Activity {
 		case R.id.submit_assignment:
 			createEvent();
 			return true;
+		case R.id.add_to_calendar:
+			Intent intent = new Intent(Intent.ACTION_INSERT);
+			intent.setType("vnd.android.cursor.item/event");
+			intent.putExtra(Events.TITLE, detailTitleText.getText().toString());
+			intent.putExtra(Events.DESCRIPTION, detailBodyText.getText().toString());
+			GregorianCalendar calDate = new GregorianCalendar(detailDatePicker.getYear(),detailDatePicker.getMonth(), detailDatePicker.getDayOfMonth());
+			intent.putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME,
+					  calDate.getTimeInMillis());
+			intent.putExtra(CalendarContract.EXTRA_EVENT_END_TIME,
+					  calDate.getTimeInMillis());
+			intent.putExtra(CalendarContract.EXTRA_EVENT_ALL_DAY, true);
+			startActivity(intent);
 		}
 		return super.onOptionsItemSelected(item);
 	}

@@ -7,18 +7,17 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Activity;
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
 
 public class NotesDetailActivity extends Activity {
 
-	private static final int ACTIVITY_CREATE = 0;
 	EditText notesTitle;
 	EditText noteContent;
 	
@@ -30,9 +29,6 @@ public class NotesDetailActivity extends Activity {
 		setContentView(R.layout.notes);
 		notesTitle = (EditText) findViewById(R.id.notes_title);
 		noteContent = (EditText) findViewById(R.id.notes_taken);
-		Intent intent = getIntent();
-		final Button submitButton = (Button) findViewById(R.id.submit_notes_button);
-		final Button clearButton = (Button) findViewById(R.id.clear_notes_button);
 
 		Bundle extras = getIntent().getExtras();
 		
@@ -43,35 +39,39 @@ public class NotesDetailActivity extends Activity {
 			notesUri = extras.getParcelable(NotesContentProvider.CONTENT_ITEM_TYPE);
 			fillData(notesUri);
 		}
-		submitButton.setOnClickListener(new View.OnClickListener()
-		{
-			
-			@Override
-			public void onClick(View v) {
-				String title = notesTitle.getText().toString();
-				String content = noteContent.getText().toString();
-				if((TextUtils.isEmpty(content)) || (TextUtils.isEmpty(title)))
-				{
-					makeToast();
-				}
-				else
-				{
-					setResult(RESULT_OK);
-					finish();
-				}
-			}
-		});
-		
-		clearButton.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				notesTitle.setText("");
-				noteContent.setText("");				
-			}
-		});
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		MenuInflater inflater = getMenuInflater();
+		inflater.inflate(R.menu.notes, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.submit_note:
+			String title = notesTitle.getText().toString();
+			String content = noteContent.getText().toString();
+			if((TextUtils.isEmpty(content)) || (TextUtils.isEmpty(title)))
+			{
+				makeToast();
+			}
+			else
+			{
+				setResult(RESULT_OK);
+				finish();
+			}
+			break;
+		case R.id.clear_note:
+			notesTitle.setText("");
+			noteContent.setText("");
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 	/*
 	 * This method fills in the database based on the given uri.
 	 *

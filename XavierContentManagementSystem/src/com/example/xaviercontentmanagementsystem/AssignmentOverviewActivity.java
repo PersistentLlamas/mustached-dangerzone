@@ -1,7 +1,5 @@
 package com.example.xaviercontentmanagementsystem;
 
-import java.util.GregorianCalendar;
-
 import com.example.xaviercontentmanagementsystem.contentprovider.EventsContentProvider;
 import com.example.xaviercontentmanagementsystem.database.EventTable;
 
@@ -9,9 +7,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.ListActivity;
 import android.app.LoaderManager;
-import android.app.Notification;
-import android.app.NotificationManager;
-import android.content.Context;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -27,7 +22,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.ListView;
-import android.widget.TextView;
 
 public class AssignmentOverviewActivity extends ListActivity implements LoaderManager.LoaderCallbacks<Cursor>
 {

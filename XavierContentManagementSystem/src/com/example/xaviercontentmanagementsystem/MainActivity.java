@@ -3,15 +3,10 @@ package com.example.xaviercontentmanagementsystem;
 import java.util.ArrayList;
 import java.util.Random;
 
-import com.example.xaviercontentmanagementsystem.contentprovider.EventsContentProvider;
-import com.example.xaviercontentmanagementsystem.database.EventTable;
-
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.app.Activity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
